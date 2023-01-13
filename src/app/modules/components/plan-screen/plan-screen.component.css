@@ -1,0 +1,52 @@
+.container{
+    padding-top: 100px;
+}
+.plan-ul {
+    list-style: none;
+    padding-left: 0px !important;
+}
+.plan-ul li {
+    display: flex;
+    align-items: center;
+}
+.plan-ul li::before {
+    background-image: url("../../../../assets/download-removebg-preview.png");
+    background-size: 36px 36px;
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    content: "";
+}
+.plan-buttons-div {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px;
+}
+.plan-buttons-div .plan-buttons-innerdiv {
+width: 80%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+.plan-buttons-div .plan-buttons-innerdiv button {
+    background: #e50914;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    margin-left: 85px;
+    opacity: 0.6;
+    padding: 18px;
+    text-align: center;
+    height: 120px;
+    width: 120px;
+}
+.table-responsive{
+    padding-bottom: 50px;
+}

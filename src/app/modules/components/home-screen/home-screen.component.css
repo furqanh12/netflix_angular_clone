@@ -1,0 +1,718 @@
+.background_image{
+    background-image: url(../../../../assets/home.jpeg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 700px;
+    border-bottom: 8px solid #222;
+}
+.background_image .overlay{
+    background: rgba(0,0,0,.4);
+    background-image: linear-gradient(0deg,rgba(0,0,0,.8) 0,transparent 60%,rgba(0,0,0,.8));
+    height: 100%;
+}
+.landing{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(700px - 145px);
+}
+.landing .landing_content{
+    color:#ffffff;
+    text-align: center;
+    padding-top: 200px;
+}
+.landing .landing_content h1{
+    width: 500px;
+    font-weight: 700;
+    font-size: 50px;
+    margin: 0 auto;
+}
+.landing .landing_content h4{
+    font-weight: 300;
+    margin-top: 15px;
+}
+.landing .landing_content p{
+    font-size: larger;
+}
+.landing .landing_content .input-group button{
+    color: #ffffff;
+    background-color: rgb(229,10,19) !important;
+}
+.email-button-div{
+    display: flex;
+    width: 100%;
+}
+.email-button-div input{
+    width: 500px;
+    border-radius: 0 !important;
+    height: 60px !important;
+}
+.email-button-div .email-submit-button{
+    border-radius: 0 !important;
+    color: #ffffff;
+    height: 60px !important;
+    font-size: x-large;
+    background-color: rgb(229,10,19) !important;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
+                                /* animation card style  */
+
+.animation-card{
+    background-color: #000000;
+    padding: 70px 45px;
+    height: 466px;
+    border-bottom: 8px solid #222;
+    align-items: center;
+}
+.animation-card .row-style{
+    padding: 70px 45px;
+}
+.animation-card-text{
+    height: 100%;
+    z-index: 3;
+}
+.animation-card .animation-card-text .title{
+    font-size: 3.125rem;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    margin: 0 0 0.4em;
+    font-weight: 500;
+}
+.animation-card .animation-card-text .subtitle{
+    font-size: 1.625rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0.75em 0 0.25em;
+}
+.story-card-img-container{
+    padding-left: 120px;
+}
+.story-card-video{
+    height: 100%;
+    max-height: 54%;
+    width: 450px;
+    position: relative;
+}
+.story-card-video video{
+    width: 390px !important;
+} 
+.story-card-video img{
+    position: absolute;
+    top: -84px !important;
+    right: 0px;
+    height: 400px;
+    width: 540px;
+    transform: translate(3%,0%);
+}
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+                                    /* offline show section  */
+
+.offline-section{
+    padding: 40px 50px;
+    background-color: #000000;
+    color: #ffffff;
+    display: flex;
+    border-bottom: 8px solid #222;
+    max-height: 500px;
+    align-items: center;
+}
+.offline-section .offline-img-container{
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    height: 100%;
+    width: 48%;
+    position: relative;
+
+}
+.offline-section .offline-img-container .offline-img{
+    height: 360px;
+}
+.offline-section .offline-text-card-container{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+.offline-section .offline-text-card-container .offline-card-text h1{
+    font-size: 3.125rem;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+.offline-section .offline-text-card-container .offline-card-text h2{
+    font-size: 1.625rem;
+    font-weight: 400;
+}
+.offline-section .offline-story-card-animation{
+    align-items: center;
+    background: #000;
+    border: 2px solid hsla(0,0%,100%,.25);
+    border-radius: 0.75em;
+    bottom: 15%;
+    box-shadow: 0 0 2em 0 #000;
+    display: flex;
+    left: 22%;
+    margin: 0 auto;
+    min-width: 15em;
+    padding: 0.25em 0.65em;
+    position: absolute;
+    transform: translateX(-11%);
+    width: 55%;
+    height: 24%;
+}
+.offline-section .offline-story-card-animation .offline-story-card-animation-image{
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin: 0 1em 0 0;
+}
+.offline-section .offline-story-card-animation .offline-story-card-animation-image img{
+    height: 4.5em;
+}
+.offline-section .offline-story-card-animation .offline-story-card-animation-text{
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin: 0.3em 0;
+}
+.offline-section .offline-story-card-animation .offline-story-card-animation-text .text-1{
+    color: #0071eb;
+    font-size: .9em;
+    font-weight: 400;
+}
+.offline-section .offline-story-card-animation-custom{
+    background: url(https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/download-icon.gif) 50% no-repeat;
+    background-size: 100%;
+    content: "";
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: 3em;
+    outline: 2px solid #000;
+    outline-offset: -2px;
+    width: 3em;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
+                                    /* watch on device section  */
+
+.watch-on-device{
+    background-color: #000000;
+    color: #ffffff;
+    padding: 70px 45px;
+    border-bottom: 8px solid #222;
+}
+.card-text{
+    flex: 0 1 auto;
+    height: 100%;
+    padding: 0 3rem 0 35px;
+    width: 52%;
+    z-index: 3;
+}
+.card-text h1{
+    font-size: 3rem;
+    padding-bottom: 10px;
+    font-weight: 400;
+}
+.card-text h2{
+    font-size: 1.625rem;
+    font-weight: 400;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
+                                    /* kids profile section  */
+
+
+.kids-profile-section{
+    padding: 70px 45px;
+    background-color: #000000;
+    color: #ffffff;
+    display: flex;
+    border-bottom: 8px solid #222;
+    flex-direction: row-reverse;
+}
+.kids-profile-section .text-card-container{
+    flex: 0 1 auto;
+    height: 100%;
+    padding: 0 3rem 0 0;
+    width: 100% !important;
+    z-index: 3;
+    margin-top: 125px;
+}
+.kids-profile-section .img-container{
+    border: 0;
+    height: auto;
+    max-width: 100%;
+}
+.kids-profile-section .img-container img{
+    height: 400px;
+}
+.kids-profile-section .kids-text-card-container .kids-card-text{
+    padding-top: 100px;
+}
+.kids-profile-section .kids-text-card-container .kids-card-text h1{
+    font-size: 3.125rem !important;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+.kids-profile-section .kids-text-card-container .kids-card-text h2{
+    font-size: 1.625rem;
+    font-weight: 300;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+                                            /* FAQ Section media query */
+.faq-section{
+    text-align: center;
+    padding: 70px 45px;
+    background-color: #000000;
+    color: #ffffff;
+    border-bottom: 8px solid #222;
+}
+.faq-section .faq-container h1{
+    font-size: 3.125rem;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+.faq-section .faq-container ul{
+    margin: 2em auto;
+    width: 75%;
+}
+.faq-section .faq-container ul li{
+    list-style-type: none;
+    margin: 0 0 8px;
+}
+.accordion .accordion-style {
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+.accordion .accordion-item{
+    border: none !important;
+    border-radius: 0px !important;
+}
+.accordion-body{
+    background-color: #303030;
+    font-size: 25px;
+    font-weight: 300;
+}
+.accordion .accordion-style .accordion-header .accordion-button{
+    background-color: #303030;
+    font-size: 25px;
+    font-weight: 400;
+    color: #ffffff;
+    border-radius: 0px !important;
+    height: 70px;
+    border-bottom: 1px solid black !important;
+}
+.accordion-button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.faq-search{
+    color:#ffffff;
+    text-align: center;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width:320px) and (max-width:321px) {
+    .offline-section .offline-story-card-animation{
+        align-items: center;
+        background: #000;
+        border: 2px solid hsla(0,0%,100%,.25);
+        border-radius: 0.75em;
+        bottom: 15%;
+        box-shadow: 0 0 2em 0 #000;
+        display: flex;
+        left: 22%;
+        margin: 0 auto;
+        min-width: 17em;
+        transform: translateX(-22%) !important;
+        padding: 0.25em 0.65em;
+        position: absolute;
+        width: 25%;
+        height: 31%;
+    }
+}
+@media (min-width:375px) and (max-width:376px) {
+    .offline-section .offline-story-card-animation{
+        align-items: center;
+        background: #000;
+        border: 2px solid hsla(0,0%,100%,.25);
+        border-radius: 0.75em;
+        bottom: 15%;
+        box-shadow: 0 0 2em 0 #000;
+        display: flex;
+        left: 22%;
+        margin: 0 auto;
+        min-width: 17em;
+        transform: translateX(-19%) !important;
+        padding: 0.25em 0.65em;
+        position: absolute;
+        width: 25%;
+        height: 31%;
+    }
+}
+@media (min-width:425px) and (max-width:426px) {
+    .offline-section .offline-story-card-animation{
+        align-items: center;
+        background: #000;
+        border: 2px solid hsla(0,0%,100%,.25);
+        border-radius: 0.75em;
+        bottom: 15%;
+        box-shadow: 0 0 2em 0 #000;
+        display: flex;
+        left: 22%;
+        margin: 0 auto;
+        min-width: 17em;
+        transform: translateX(-14%) !important;
+        padding: 0.25em 0.65em;
+        position: absolute;
+        width: 25%;
+        height: 31%;
+    }
+}
+@media(max-width:540px){
+    .background_image{
+        height: 100%;
+        object-fit: cover;
+        width: auto;
+    }
+    .landing{
+    height: 500px;
+    }
+    .landing .landing_content{
+        line-height: 1.1;
+        margin-bottom: 5px !important;
+        padding-top: 100px !important;
+    }
+    .landing .landing_content h1{
+        margin: 0 auto;
+        font-weight: 500;
+        max-width: 300px !important;
+        font-size: 1.75rem;
+    }
+    .landing .landing_content h4{
+        font-size: 1.125rem;
+        margin: 1rem auto;
+        font-weight: 350;
+    }
+    .landing .landing_content p{
+        font-weight: 350;
+        margin: 0 auto;
+        max-width: 450px;
+        font-size: 18px;
+        padding: 0 5%;
+        text-align: center;
+    }
+    .email-button-div{
+        flex-direction: column;
+        align-items: center;
+    }
+    .email-button-div input{
+        width: 290px !important;
+        margin: 15px;
+        margin-bottom: 10px;
+        height: 48px !important;
+    }
+    .email-button-div .email-submit-button{
+        margin-top: 5px;
+        height: 49px !important;
+        font-size: initial;
+    }
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
+                                /* animation card style media query  */
+
+    .animation-card{
+        height: auto;
+        padding: 0;
+        overflow: hidden;
+        margin: 0;
+        padding: 50px 5%;
+    }
+    .animation-card .animation-card-text{
+        padding: 0;
+        text-align: center;
+        width: 100%;
+    }
+    .animation-card .animation-card-text .title{
+        font-size: 1.625rem;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+        color: #ffffff;
+        margin: 0 0 0.4em;
+        font-weight: 400;
+    }
+    .animation-card .animation-card-text .subtitle{
+        font-size: 1.125rem;
+        font-weight: 400;
+        color: #ffffff;
+        margin: 0.75em 0 0.25em;
+    }
+    .animation-card .row-style{
+        padding: 0px 0px;
+    }
+    .animation-card .row-style1{
+        padding-bottom: 80px;
+    }
+    .story-card-img-container{
+        box-sizing: border-box;
+        display: flex;
+        flex: 0 1 auto;
+        height: 100%;
+        margin-top: 1em;
+        max-width: 600px;
+        width: 100%;
+        justify-content: center;
+        padding-left: 135px;
+    }
+    .story-card-video{
+        height: 100%;
+        width: 450px;
+        position: relative;
+        margin: -10% 0 0;
+        transform: translate(9%,-9%) !important;
+    }
+    .story-card-video video{
+        width: 242px !important;
+    } 
+
+    .story-card-video img{
+        position: absolute;
+        top: -84px !important;
+        height: 250px;
+        width: 331px;
+        transform: translate(-49%,13%);
+    }
+    /* /////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+                                    /* offline show section media query */
+    .row{
+        margin: 0 ;
+    }
+    .offline-section{
+        align-items: center;
+        display: flex;
+        flex-direction: row-reverse !important;
+        padding: 50px 8% !important; 
+        max-height: 450px !important;
+        justify-content: center;
+    }
+    .mobile-img{
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+    .offline-section .offline-img-container{
+        margin-top: 7em;
+        width: 100%;
+    }
+    .offline-section .offline-img-container .offline-img{
+        height: 216px !important;
+        width: 100%;
+        position: relative;
+    }
+    .offline-section .offline-text-card-container{
+        align-items: center;
+        transform: translateY(-312px);
+        display: flex;
+        padding: 0 !important;
+        width: 100% !important;
+        margin: 0;
+        text-align: center;
+    }
+    .offline-section .offline-card-text{
+        width: auto;
+    }
+    .offline-section .offline-text-card-container .offline-card-text h2 {
+        font-size: 1.125rem !important; 
+        font-weight: 300 !important;
+    }
+    .offline-section .offline-text-card-container .offline-card-text h1{
+        font-size: 1.625rem;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+    }
+    .offline-section .offline-text-card-container .offline-card-text h2{
+        font-size: 1.625rem;
+        font-weight: 400;
+    }
+    .offline-section .offline-story-card-animation{
+        align-items: center;
+        background: #000;
+        border: 2px solid hsla(0,0%,100%,.25);
+        border-radius: 0.75em;
+        bottom: 15%;
+        box-shadow: 0 0 2em 0 #000;
+        display: flex;
+        left: 22%;
+        margin: 0 auto;
+        min-width: 17em;
+        transform: translateX(-22%);
+        padding: 0.25em 0.65em;
+        position: absolute;
+        width: 25%;
+        height: 31%;
+    }
+    .offline-section .offline-story-card-animation .offline-story-card-animation-image img{
+        height: 3em;
+    }
+
+    /* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
+                                    /* watch on device section media query */
+
+.watch-on-device{
+    background-color: #000000;
+    color: #ffffff;
+    padding: 50px 5%;
+    border-bottom: 8px solid #222;
+}
+.watch-on-device .card-container{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1100px;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+}
+.card-text{
+    flex: 0 1 auto;
+    height: 100%;
+    padding: 0 !important;
+    width: 100%;
+    z-index: 3;
+}
+.card-text h1{
+    font-size: 2rem;
+}
+.card-text h2{
+    font-size: 1.125rem;
+    font-weight: 300;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+    margin: 0 0 0.4em;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
+                                    /* kids profile section media query */
+
+
+    .kids-profile-section{
+        padding: 50px 5% !important;
+        background-color: #000000;
+        color: #ffffff;
+        display: flex;
+        border-bottom: 8px solid #222;
+        flex-direction: row;
+    }
+    .kids-profile-section .kids-text-card-container{
+        flex: 0 1 auto;
+        height: 0 !important;
+        width: 100% !important;
+        z-index: 3;
+        padding: 0;
+        margin-top: 0 !important;
+        max-width: 500px;
+    }
+    .kids-profile-section .kids-text-card-container .kids-card-text {
+        text-align: center;
+    }
+    .kids-profile-section .img-container{
+        max-width: 500px;
+        width: 100%;
+        padding-top: 150px;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+    .kids-profile-section .img-container img{
+        height: 200px;
+    }
+    .kids-profile-section .kids-text-card-container .kids-card-text {
+        padding: 0;
+    }
+    .kids-profile-section .kids-text-card-container .kids-card-text h1{
+        font-size: 1.625rem !important;
+        margin-bottom: 1rem;
+    }
+    .kids-profile-section .kids-text-card-container .kids-card-text h2{
+        font-size: 1.125rem;
+        font-weight: 300;
+        line-height: 1.3;
+    }
+
+    /* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+                                            /* FAQ Section media query */
+    .faq-section{
+        text-align: center;
+        padding: 50px 0 !important;
+        background-color: #000000;
+        color: #ffffff;
+        border-bottom: 8px solid #222;
+    }
+    .faq-section .faq-container h1{
+        font-size: 1.625rem;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .faq-section .faq-container ul{
+        margin: 2em auto;
+        width: 100%;
+        padding: 0;
+    }
+    .faq-section .faq-container ul li{
+        list-style-type: none;
+        margin: 0 0 8px;
+    }
+    .accordion .accordion-style {
+        margin-bottom: 10px;
+        color: #ffffff;
+    }
+    .accordion .accordion-item{
+        border: none !important;
+        border-radius: 0px !important;
+    }
+    .accordion-body{
+        background-color: #303030;
+        font-size: 17px;
+        font-weight: 400;
+    }
+    .accordion .accordion-style .accordion-header .accordion-button{
+        background-color: #303030;
+        font-size: 17px;
+        font-weight: 400;
+        color: #ffffff;
+        border-radius: 0px !important;
+        height: 50px;
+        border-bottom: 1px solid black !important;
+    }
+    .accordion-button:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    .faq-search{
+        color:#ffffff;
+        margin: 0 auto !important;
+    }
+    .faq-search p{
+        font-size: 1.2rem;
+        max-width: none;
+        font-weight: 400;
+        padding: 0 5%;
+    }
+    .email-button-div{
+        align-items: center;
+        justify-content: center;
+    }
+}

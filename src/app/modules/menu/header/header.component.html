@@ -1,0 +1,38 @@
+<header *ngIf="!token">
+    <nav class="navbar navbar-expand">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="../assets/logo.png" alt="">
+        </a>
+        <div class="collapse navbar-collapse me-auto" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <form *ngIf="url === 'login'">
+            <button class="btn signin_btn btn-danger" (click)="signIn()" type="submit">Sign In</button>
+          </form>
+          <form *ngIf="url !== 'login'">
+            <button class="btn signin_btn btn-danger" (click)="signIn()" type="submit">Sign In</button>
+          </form>
+        </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <header class="second-header" *ngIf="token">
+    <div class="netflixLogo">
+      <a id="logo" href="movies"><img src="../../../../assets/logo.png" alt="Logo Image"></a>
+    </div>      
+    <nav class="main-nav">                
+      <a href="#home">Home</a>
+      <a href="#tvShows">TV Shows</a>
+      <a href="#movies">Movies</a>
+      <a href="#originals">Originals</a>
+      <a href="#">Recently Added</a>
+      <a target="_blank" href="https://codepen.io/cb2307/full/NzaOrm">Portfolio</a>        
+    </nav>
+    <nav class="sub-nav">
+      <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
+      <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>
+      <button class="btn signin_btn btn-danger" (click)="logOut()" type="submit">Sign Out</button>     
+    </nav>      
+  </header>

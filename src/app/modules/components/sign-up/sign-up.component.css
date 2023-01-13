@@ -1,0 +1,24 @@
+.container-style{
+    padding-top: 50px;
+}
+.row-style{
+    margin-top: 70px;
+}
+.singup-form input[type="email"],
+    input[type="password"] {
+    height: 60px !important;
+    border-radius: 0;
+}
+.singup-form input[type="checkbox"] {
+    height: 25px !important;
+    width: 25px !important;
+    border-radius: 0;
+}
+.singup-form .singup-button {
+    border-radius: 4px;
+    font-size: 24px;
+    font-weight: 400;
+    min-height: 64px;
+    background: #E50914;
+    
+}

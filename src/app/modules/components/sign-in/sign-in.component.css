@@ -1,0 +1,73 @@
+.signin-main{
+    background-image: url('../../../../assets/home.jpeg');
+    background-size: cover;
+    display: block;
+    height: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    width: 100%;
+    z-index: -1;
+}
+.signin-main .overlay{
+    padding: 100px;
+    background: rgba(0,0,0,.4);
+    background-image: linear-gradient(0deg,rgba(0,0,0,.8) 0,transparent 60%,rgba(0,0,0,.8));
+    height: 100%;
+}
+.signin-div{
+    width: 450px;
+    min-height: 550px;
+    margin: 0 auto;
+    background-color: rgba(0,0,0,0.75) !important;
+    border-radius: 4px !important;
+    padding: 60px 68px 40px;
+}
+.signin-div .card{
+    background: transparent;
+    border: none !important;
+}
+.signin-div .card h1{
+    color: #fff;
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 28px;
+}
+.signin-div .card input[type=email], input[type=password]{
+    background: #333;
+    border: none;
+    color: #fff;
+}
+.signin-div .card label {
+    color: #8c8c8c;
+    font-size: 14px;
+}
+.signin-div .error{
+    text-align: center;
+}
+.signin-div .error p{
+    margin-bottom: 0 !important;
+    color: #ef0303;
+}
+.singin-div .singup-button {
+    border-radius: 4px;
+    font-size: 24px;
+    font-weight: 400;
+    min-height: 64px;
+    background: #E50914;   
+}
+.signin-div .need-help{
+    text-decoration: none;
+    color: #b3b3b3;
+    font-size: 13px;
+    font-weight: 400;
+}
+.signin-div .new-net{
+    color: #737373;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 16px;
+}
+.signin-div .signup__ancher{
+    text-decoration: none;
+    color: white;
+}

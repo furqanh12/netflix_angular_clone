@@ -1,0 +1,42 @@
+footer{
+    padding-top: 50px;
+    padding-bottom: 1px;
+    background-color: #000000;
+}
+.container{
+    max-width: 900px !important;
+}
+footer .container .footer-wrapper .footer-container p{
+    padding-left: 32px;
+    padding-bottom: 20px;
+}
+footer .container .footer-wrapper .footer-container p a{
+    text-decoration: none;
+    color: #737373;
+    font-size: 15px;
+}
+.row ul li{
+    list-style-type: none;
+    padding-bottom: 10px;
+    text-decoration: none;
+}
+.row ul li a{
+    text-decoration: none;
+    color: #737373;
+    font-size: 13px;
+}
+footer .container .footer-wrapper .footer-container .footer-country{
+    color: #737373;
+    font-size: 13px;
+    margin-top: 24px;
+}
+
+
+@media(max-width:480px){
+    .col-6{
+        padding: 0;
+    }
+    .col{
+        padding: 0;
+    }
+}
