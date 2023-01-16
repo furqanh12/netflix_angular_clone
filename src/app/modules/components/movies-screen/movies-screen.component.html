@@ -1,25 +1,26 @@
-  <!-- MAIN CONTAINER -->
-  <section class="main-container" style="background-color: black;">
-    <div class="location" id="home">
-        <h1 id="home">Popular on Netflix</h1>
-        <div class="box">
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p1.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p2.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p3.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p4.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p5.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p6.PNG?raw=true" alt=""></a>
-  
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p7.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p8.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p9.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p10.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p11.PNG?raw=true" alt=""></a>
-          <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/p12.PNG?raw=true" alt=""></a>        
-        </div>
-    </div>
-    
-
+<section class="main-container" style="background-color: black;">
+  <div class="location" id="home">
+    <h1 id="home">Popular on Netflix</h1>
+    <swiper
+        [slidesPerView]="5"
+        [spaceBetween]="40"
+        (swiper)="onSwiper($event)"
+        (slideChange)="onSlideChange()"
+        [navigation]="true"
+        [pagination]="{ clickable: true }"
+      >
+        <ng-template *ngFor="let film of films" swiperSlide>
+          <a class="a-box" href="">
+            <img class="box-img" src={{film.img}} alt="">
+            <div class="card">
+              <h2>Card Title</h2>
+              <p>Card Description</p>
+            </div>
+          </a>
+        </ng-template>
+    </swiper>
+  </div>
+      
     <h1 id="myList">Trending Now</h1>
     <div class="box">
       <a href=""><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/t1.PNG?raw=true" alt=""></a>

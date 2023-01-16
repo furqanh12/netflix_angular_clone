@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 
 // import { sharedDataReducer } from './ngrx-redux/sharedDataReducer';
 import { AppRoutingModule } from './app-routing.module';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { SwiperModule } from 'swiper/angular';
 
 import { AppComponent } from './app.component';
 import { HomeScreenComponent } from './modules/components/home-screen/home-screen.component';
@@ -35,8 +37,9 @@ import { MoviesScreenComponent } from './modules/components/movies-screen/movies
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    SlickCarouselModule,
+    SwiperModule
     // StoreModule.forRoot({
-    //   token:sharedDataReducer
     // })
   ],
   providers: [AuthService, AuthGuard],

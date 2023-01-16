@@ -1,5 +1,22 @@
-img {
-    max-width: 100%;
+/* @import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination'; */
+@import "~swiper/swiper-bundle.min.css";
+.swiper-pagination-bullet{
+  display: none;
+}
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
+  content: 'next';
+  color: gray;
+}
+.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
+  content: 'prev';
+  color: gray;
+}
+.box-img {
+    width: 230px;
+    height: 130px;
+    border-radius: 2px;
   }
   
   h1 {
@@ -19,25 +36,29 @@ img {
     border-bottom: 8px solid #222;
   }
   
-  .box {
-    display: grid;
+  .a-box {
+    display: flex;
+    flex-direction: column;
     grid-gap: 20px;
     grid-template-columns: repeat(6, minmax(100px, 1fr));
+    transition: transform .3s !important; 
   }
   
-  .box a {
-    transition: transform .3s;  
+  .a-box .card{
+    display: none;
   }
-  
-  .box a:hover {
-    transition: transform .3s;
-    -ms-transform: scale(1.4);
-    -webkit-transform: scale(1.4);  
-    transform: scale(1.4);
+  .a-box:hover .card{
+    display: block;
   }
+  /* .a-box  {
+    transition: transform .3s !important;  
+  } */
   
-  .box img {
-    border-radius: 2px;
+  .a-box:hover {
+    transition: transform .3s !important;
+    -ms-transform: scale(1.4) !important;
+    -webkit-transform: scale(1.4) !important;  
+    transform: scale(1.4) !important;
   }
   
   /* LINKS */

@@ -42,6 +42,7 @@
 .email-button-div{
     display: flex;
     width: 100%;
+    justify-content: center;
 }
 .email-button-div input{
     width: 500px;

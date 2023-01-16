@@ -15,7 +15,7 @@
     height: 100%;
 }
 .signin-div{
-    width: 450px;
+    width: 445px;
     min-height: 550px;
     margin: 0 auto;
     background-color: rgba(0,0,0,0.75) !important;
@@ -41,19 +41,38 @@
     color: #8c8c8c;
     font-size: 14px;
 }
-.signin-div .error{
-    text-align: center;
-}
-.signin-div .error p{
-    margin-bottom: 0 !important;
-    color: #ef0303;
-}
-.singin-div .singup-button {
+.ui-message-contents {
+    padding: 10px 20px;
+    color: #fff;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 14px;
+    background: #e87c03;
     border-radius: 4px;
-    font-size: 24px;
-    font-weight: 400;
-    min-height: 64px;
-    background: #E50914;   
+    margin: 0 0 16px;
+}
+.ui-message-contents a{
+    color: inherit;
+    text-decoration: underline;
+    background-color: transparent;
+    cursor: pointer;
+}
+.form-floating input{
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    padding: 16px 20px 0;
+}
+.singIn-button {
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 24px 0 12px;
+    padding: 13px;
+    background: #e50914 !important;   
+    color: #ffffff;
 }
 .signin-div .need-help{
     text-decoration: none;
@@ -70,4 +89,12 @@
 .signin-div .signup__ancher{
     text-decoration: none;
     color: white;
+}
+.form-check-input{
+    background: #737373;
+    border: 0;
+    border-radius: 2px;
+}
+.form-check-label{
+    padding-top: 6px;
 }
