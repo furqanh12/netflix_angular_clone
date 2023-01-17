@@ -40,6 +40,12 @@
   
   .main-nav a {
     color: var(--light);
+    transition: color .4s;
+    color: #e5e5e5;
+    align-items: center;
+    font-size: 14px;
+    padding-left: 14px;
+    font-weight: 300;
     text-decoration: none;
     margin: 5px;
     color: #ffffff;

@@ -8,7 +8,8 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 import { EntertainmentService } from 'src/app/services/entertainment.service';
 interface moviesObject {
   poster_path:string,
-  img:string
+  img:string,
+  original_title:string;
 }
 
 @Component({
@@ -24,6 +25,7 @@ export class MoviesScreenComponent implements  OnInit ,moviesObject {
   constructor(private http:HttpClient, private entr_s:EntertainmentService) {}
   poster_path: string;
   img: string;
+  original_title: string;
 
 
   ngOnInit(): void {
