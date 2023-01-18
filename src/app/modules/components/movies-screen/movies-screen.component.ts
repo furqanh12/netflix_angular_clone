@@ -21,17 +21,31 @@ interface moviesObject {
 
 export class MoviesScreenComponent implements  OnInit ,moviesObject {
 
-  films: Array<moviesObject>;
   constructor(private http:HttpClient, private entr_s:EntertainmentService) {}
+  films: Array<moviesObject>;
   poster_path: string;
   img: string;
   original_title: string;
+  top_movies:Array<{url:string}>= [
+    {url:"../../../../assets/1.png"},
+    {url:"../../../../assets/2.png"},
+    {url:"../../../../assets/3.png"},
+    {url:"../../../../assets/4.png"},
+    {url:"../../../../assets/5.png"},
+    {url:"../../../../assets/6.png"},
+    {url:"../../../../assets/7.png"},
+    {url:"../../../../assets/8.png"},
+    {url:"../../../../assets/9.png"},
+    {url:"../../../../assets/10.png"},
+];
+to_10_movies:Array<moviesObject>=[]
+  
 
 
   ngOnInit(): void {
-     this.entr_s.loadMovies().subscribe((movies)=>{
-      this.films = (movies['results'] ?? []).map((item:moviesObject)=>{ return {...item,img:`https://image.tmdb.org/t/p/w500${item.poster_path}`}})
-      console.log(this.films)
+     this.entr_s.loadMovies().subscribe((movies:any)=>{
+      this.films = (movies?.results ?? []).map((item:moviesObject)=>{ return {...item,img:`https://image.tmdb.org/t/p/w500${item?.poster_path}`}})
+      this.to_10_movies=(this.films.sort((a:any,b:any)=>b.popularity-a.popularity)).filter((item:moviesObject,index:number)=>index <= 9 && item)
     })
   }
 

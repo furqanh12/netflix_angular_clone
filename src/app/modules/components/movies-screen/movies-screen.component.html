@@ -1,117 +1,129 @@
-<!-- <div class="background-img"></div> -->
-<section class="main-container">
-  <div class="location" id="home">
-    <p id="home">Continue watching</p>
-    <swiper
-    [slidesPerView]="5"
-    [spaceBetween]="0"
-    (swiper)="onSwiper($event)"
-    (slideChange)="onSlideChange()"
-    [navigation]="true"
-    [pagination]="{ clickable: true }"
-    >
-    <ng-template *ngFor="let film of films" swiperSlide>
-      <a class="a-box" href="">
-        <img class="box-img" src={{film.img}} alt="">
-        <div class="card">
-              <i class="fa-regular fa-circle-play"></i>
-              <i class="fa-solid fa-circle-plus"></i>
-              <i class="fa-regular fa-thumbs-up"></i>
-              <p>"{{film.original_title}}"</p>
+<div class="background-img">
+  <div class="overlay">
+    <div class="main-top-movies">
+    <div class="location top-movies" id="home">
+      <p id="home">Continue watching</p>
+      <swiper
+      [slidesPerView]="5"
+      [spaceBetween]="0"
+      (swiper)="onSwiper($event)"
+      (slideChange)="onSlideChange()"
+      [navigation]="true"
+      [pagination]="{ clickable: true }"
+      >
+      <ng-template *ngFor="let film of to_10_movies;let i=index" swiperSlide>
+        <a class="a-box" href="">
+          <div class="d-flex flex-column">
+            <div *ngIf="i <= 9" class="d-flex align-items-center">
+              <img class="img-number" src={{top_movies[i]?.url}} alt="">
+              <img class="movie-img" src={{film.img}} alt="">
             </div>
-          </a>
-        </ng-template>
-    </swiper>
-  </div>
-      
-    <div class="my-list">
-      <P id="myList">Trending Now</P>
-    <swiper
-    [slidesPerView]="5"
-    [spaceBetween]="0"
-    (swiper)="onSwiper($event)"
-    (slideChange)="onSlideChange()"
-    [navigation]="true"
-    [pagination]="{ clickable: true }"
-    >
-    <ng-template *ngFor="let film of films" swiperSlide>
-      <a class="a-box" href="">
-        <img class="box-img" src={{film.img}} alt="">
-        <div class="card">
-              <i class="fa-regular fa-circle-play"></i>
-              <i class="fa-solid fa-circle-plus"></i>
-              <i class="fa-regular fa-thumbs-up"></i>
-              <p>"{{film.original_title}}"</p>
-            </div>
-          </a>
-        </ng-template>
-    </swiper>
+                <div>
+                  <div class="card">
+                    <i class="fa-regular fa-circle-play"></i>
+                    <i class="fa-solid fa-circle-plus"></i>
+                    <i class="fa-regular fa-thumbs-up"></i>
+                    <p>"{{film.original_title}}"</p>
+                  </div>
+                </div>
+          </div>
+            </a>
+          </ng-template>
+      </swiper>
     </div>
-    
-    <P id="tvShows">TV Shows</P>
-    <swiper
-    [slidesPerView]="5"
-    [spaceBetween]="0"
-    (swiper)="onSwiper($event)"
-    (slideChange)="onSlideChange()"
-    [navigation]="true"
-    [pagination]="{ clickable: true }"
-    >
-    <ng-template *ngFor="let film of films" swiperSlide>
-      <a class="a-box" href="">
-        <img class="box-img" src={{film.img}} alt="">
-        <div class="card">
-              <i class="fa-regular fa-circle-play"></i>
-              <i class="fa-solid fa-circle-plus"></i>
-              <i class="fa-regular fa-thumbs-up"></i>
-              <p>"{{film.original_title}}"</p>
-            </div>
-          </a>
-        </ng-template>
-    </swiper>
-    
+    </div>
+  </div>
+</div>
+<section class="main-container">
 
-    <P id="movies">Blockbuster Action & Adventure</P>
-    <swiper
-    [slidesPerView]="5"
-    [spaceBetween]="0"
-    (swiper)="onSwiper($event)"
-    (slideChange)="onSlideChange()"
-    [navigation]="true"
-    [pagination]="{ clickable: true }"
-    >
-    <ng-template *ngFor="let film of films" swiperSlide>
-      <a class="a-box" href="">
-        <img class="box-img" src={{film.img}} alt="">
-        <div class="card">
-              <i class="fa-regular fa-circle-play"></i>
-              <i class="fa-solid fa-circle-plus"></i>
-              <i class="fa-regular fa-thumbs-up"></i>
-              <p>"{{film.original_title}}"</p>
-            </div>
-          </a>
-        </ng-template>
-    </swiper>
+  <div class="my-list">
+    <P id="myList">Trending Now</P>
+  <swiper
+  [slidesPerView]="5"
+  [spaceBetween]="0"
+  (swiper)="onSwiper($event)"
+  (slideChange)="onSlideChange()"
+  [navigation]="true"
+  [pagination]="{ clickable: true }"
+  >
+  <ng-template *ngFor="let film of films" swiperSlide>
+    <a class="a-box" href="">
+      <img class="box-img" src={{film.img}} alt="">
+      <div class="card">
+            <i class="fa-regular fa-circle-play"></i>
+            <i class="fa-solid fa-circle-plus"></i>
+            <i class="fa-regular fa-thumbs-up"></i>
+            <p>"{{film.original_title}}"</p>
+          </div>
+        </a>
+      </ng-template>
+  </swiper>
+  </div>
+  
+  <P id="tvShows">TV Shows</P>
+  <swiper
+  [slidesPerView]="5"
+  [spaceBetween]="0"
+  (swiper)="onSwiper($event)"
+  (slideChange)="onSlideChange()"
+  [navigation]="true"
+  [pagination]="{ clickable: true }"
+  >
+  <ng-template *ngFor="let film of films" swiperSlide>
+    <a class="a-box" href="">
+      <img class="box-img" src={{film.img}} alt="">
+      <div class="card">
+            <i class="fa-regular fa-circle-play"></i>
+            <i class="fa-solid fa-circle-plus"></i>
+            <i class="fa-regular fa-thumbs-up"></i>
+            <p>"{{film.original_title}}"</p>
+          </div>
+        </a>
+      </ng-template>
+  </swiper>
+  
 
-    <P id="originals">Netflix Originals</P>
-    <swiper
-    [slidesPerView]="5"
-    [spaceBetween]="0"
-    (swiper)="onSwiper($event)"
-    (slideChange)="onSlideChange()"
-    [navigation]="true"
-    [pagination]="{ clickable: true }"
-    >
-    <ng-template *ngFor="let film of films" swiperSlide>
-      <a class="a-box" href="">
-        <img class="box-img" src={{film.img}} alt="">
-        <div class="card">
-              <i class="fa-regular fa-circle-play"></i>
-              <i class="fa-solid fa-circle-plus"></i>
-              <i class="fa-regular fa-thumbs-up"></i>
-              <p>"{{film.original_title}}"</p>
-            </div>
-          </a>
-        </ng-template>
-    </swiper>
+  <P id="movies">Blockbuster Action & Adventure</P>
+  <swiper
+  [slidesPerView]="5"
+  [spaceBetween]="0"
+  (swiper)="onSwiper($event)"
+  (slideChange)="onSlideChange()"
+  [navigation]="true"
+  [pagination]="{ clickable: true }"
+  >
+  <ng-template *ngFor="let film of films" swiperSlide>
+    <a class="a-box" href="">
+      <img class="box-img" src={{film.img}} alt="">
+      <div class="card">
+            <i class="fa-regular fa-circle-play"></i>
+            <i class="fa-solid fa-circle-plus"></i>
+            <i class="fa-regular fa-thumbs-up"></i>
+            <p>"{{film.original_title}}"</p>
+          </div>
+        </a>
+      </ng-template>
+  </swiper>
+
+  <P id="originals">Netflix Originals</P>
+  <swiper
+  [slidesPerView]="5"
+  [spaceBetween]="0"
+  (swiper)="onSwiper($event)"
+  (slideChange)="onSlideChange()"
+  [navigation]="true"
+  [pagination]="{ clickable: true }"
+  >
+  <ng-template *ngFor="let film of films" swiperSlide>
+    <a class="a-box" href="">
+      <img class="box-img" src={{film.img}} alt="">
+      <div class="card">
+            <i class="fa-regular fa-circle-play"></i>
+            <i class="fa-solid fa-circle-plus"></i>
+            <i class="fa-regular fa-thumbs-up"></i>
+            <p>"{{film.original_title}}"</p>
+          </div>
+        </a>
+      </ng-template>
+  </swiper>
    
