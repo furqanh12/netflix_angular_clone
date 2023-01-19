@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SwiperModule } from 'swiper/angular';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { AppComponent } from './app.component';
 import { HomeScreenComponent } from './modules/components/home-screen/home-screen.component';
@@ -19,6 +20,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guard/auth.guard';
 import { SignInComponent } from './modules/components/sign-in/sign-in.component';
 import { MoviesScreenComponent } from './modules/components/movies-screen/movies-screen.component';
+import { SeriesScreenComponent } from './modules/components/series-screen/series-screen.component';
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { MoviesScreenComponent } from './modules/components/movies-screen/movies
     PlanScreenComponent,
     SignInComponent,
     MoviesScreenComponent,
+    SeriesScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { MoviesScreenComponent } from './modules/components/movies-screen/movies
     FormsModule,
     HttpClientModule,
     SlickCarouselModule,
-    SwiperModule
+    SwiperModule,
+    CarouselModule
     // StoreModule.forRoot({
     // })
   ],

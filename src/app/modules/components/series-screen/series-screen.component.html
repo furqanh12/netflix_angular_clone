@@ -1,0 +1,19 @@
+<!-- <ngx-slick-carousel class="carousel" 
+#slickModal="slick-carousel" 
+[config]="slideConfig" >
+<div ngxSlickItem *ngFor="let film of to_10_movies;let i=index" class="slide">
+    <img class="movie-img" src={{film.img}} alt="">
+</div>
+</ngx-slick-carousel> -->
+
+<owl-carousel-o [options]="customOptions">
+
+    <ng-container *ngFor="let film of to_10_movies;let i=index">
+
+        <ng-template carouselSlide [id]="film.img">
+        <img class="movie-img" [src]="film.img" alt="">
+          </ng-template>
+
+    </ng-container>
+
+  </owl-carousel-o>

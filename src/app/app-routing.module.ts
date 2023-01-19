@@ -7,6 +7,7 @@ import { SignInComponent } from './modules/components/sign-in/sign-in.component'
 import { HomeScreenComponent } from './modules/components/home-screen/home-screen.component';
 import { PlanScreenComponent } from './modules/components/plan-screen/plan-screen.component';
 import { MoviesScreenComponent } from './modules/components/movies-screen/movies-screen.component';
+import { SeriesScreenComponent } from './modules/components/series-screen/series-screen.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path : 'login', component : SignInComponent },
   {path : 'signup', component : SignUpComponent},
   {path : 'plans', component : PlanScreenComponent, canActivate: [AuthGuard]},
-  {path : 'movies', component : MoviesScreenComponent, canActivate: [AuthGuard]}
+  {path : 'movies', component : MoviesScreenComponent, canActivate: [AuthGuard]},
+  {path : 'series', component : SeriesScreenComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

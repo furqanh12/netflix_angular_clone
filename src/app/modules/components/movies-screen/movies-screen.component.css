@@ -79,12 +79,19 @@ p{
     height: 130px;
     border-radius: 5px;
   }
-  .movie-img:hover{
+  .a-box .card{
+    display: none;
+    width: inherit;
+  }
+  /* .movie-img:hover{
     border-radius: 0 !important;
     transform: scale(1.5);
     transition:.5s;
     height: auto;
-  }
+  } */
+  /* .movie-img:hover + .a-box div.card{
+    display: block !important;
+  } */
   .wrapper {
     margin: 0;
     padding: 0;
@@ -108,12 +115,30 @@ p{
   margin: 0 auto;
   text-decoration: none;
   } 
-  .a-box:hover {
+  /* .a-box:hover {
     border-radius: 0;
+    border-radius: 0 !important;
+    transform: scale(1.5);
+    transition:.5s;
+    height: auto;
+  } */
+  .a-box .movie-img{
+    position: relative;
   }
   .a-box .card{
-    display: none;
-    width: inherit;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  .a-box:hover{
+    height: auto;
+  }
+  .a-box:hover .movie-img{
+    border-radius: 0;
+    border-radius: 0 !important;
+    transform: scale(1.5);
+    transition:.5s;
+    height: auto;
   }
   .a-box:hover .card{
     display: block;
@@ -124,6 +149,13 @@ p{
     border-top-right-radius: 0;
     border-bottom-left-radius: 5px !important;
     border-bottom-right-radius: 5px !important;
+    top: 100%;
+    left: 28%;
+    width: 197px;
+    z-index: 10 !important;
+  }
+  .a-box:hover .img-number{
+    z-index: -1 !important;
   }
   .card i {
     color:#f3f3f3;

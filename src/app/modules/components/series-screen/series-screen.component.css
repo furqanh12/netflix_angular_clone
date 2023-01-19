@@ -1,0 +1,24 @@
+.carousel{
+    display: flex;
+    overflow-x: auto;
+}
+.slide{
+    width: 200px;
+    height: 300px;
+}
+.slide img{
+    width: inherit;
+    height: inherit;
+}
+.slick-prev{
+    height: 45px !important;
+    width: 40px !important;
+    background: gray !important;
+    z-index: 100 !important;
+} 
+.slick-next{
+    height: 45px !important;
+    width: 40px !important;
+    background: gray !important;
+    z-index: 100 !important;
+}
