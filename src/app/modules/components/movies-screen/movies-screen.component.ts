@@ -46,8 +46,9 @@ to_10_movies:Array<moviesObject>=[]
      this.entr_s.loadMovies().subscribe((movies:any)=>{
       this.films = (movies?.results ?? []).map((item:moviesObject)=>{ return {...item,img:`https://image.tmdb.org/t/p/w500${item?.poster_path}`}})
       this.to_10_movies=(this.films.sort((a:any,b:any)=>b.popularity-a.popularity)).filter((item:moviesObject,index:number)=>index <= 9 && item)
-      console.log(this.to_10_movies);
-      console.log(this.films);
+      // console.log(this.to_10_movies);
+      // console.log(this.films);
+      this.entr_s.addMoviesToDB(this.films).subscribe(()=>{})
     })
   }
 

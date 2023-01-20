@@ -12,6 +12,7 @@ export class EntertainmentService {
   constructor(private http:HttpClient) { }
 
   addMoviesToDB(movies:Array<{}>){
+    console.log(movies);
     return this.http.post(environment.host + 'api/movies',movies)
   }
 
