@@ -8,15 +8,19 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EntertainmentService {
-
+  
   constructor(private http:HttpClient) { }
 
   addMoviesToDB(movies:Array<{}>){
     console.log(movies);
-    return this.http.post(environment.host + 'api/movies',movies)
+    return this.http.post(environment.host + 'api/movies/insert_to_db',movies)
   }
 
-  loadMovies():Observable<any[]>{
-    return this.http.get<any[]>('https://api.themoviedb.org/3/discover/movie?api_key=87dfa1c669eea853da609d4968d294be&language=fr-FR&sort_by=popularity.desc')
+  loadMovies(pageNo:number):Observable<{status:String,result:Array<{poster_path:string,
+    img:string,
+    original_title:string}>}>{
+    return this.http.get<{status:String,result:Array<{poster_path:string,
+      img:string,
+      original_title:string}>}>(environment.host + `api/movies/get_movies?page=${pageNo}`,{})
   }
 }

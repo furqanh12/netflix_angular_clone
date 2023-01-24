@@ -1,39 +1,74 @@
-<div class="background-img">
-  <div class="overlay">
-    <div class="main-top-movies">
-    <div class="location top-movies" id="home">
-      <p id="home">Continue watching</p>
-      <swiper
-      [slidesPerView]="5"
-      [spaceBetween]="0"
-      (swiper)="onSwiper($event)"
-      (slideChange)="onSlideChange()"
-      [navigation]="true"
-      [pagination]="{ clickable: true }"
-      >
-      <ng-template *ngFor="let film of to_10_movies;let i=index" swiperSlide>
-        <a class="a-box" href="">
-          <div class="d-flex flex-column">
-            <div *ngIf="i <= 9" class="d-flex align-items-center">
-              <img class="img-number" src={{top_movies[i]?.url}} alt="">
-              <img class="movie-img" src={{film.img}} alt="">
-            </div>
-                <div>
-                  <div class="card">
+<div class="main-container">
+  <div class="background-img">
+    <div class="overlay">
+      <div>
+        <div class="main-top-movies">
+          <div class="location top-movies" id="home">
+            <p >Continue watching</p>
+            <div class="row mt-3">
+              <div class="col-md-3 mb-3" *ngFor="let film of to_10_movies;let i=index">
+                <div class="card" >
+                  <div class="d-flex align-items-center">
+                    <img *ngIf="i <= 9" class="number-img"  src={{top_movies[i]?.url}} alt="">
+                    <img class="card-img-top" src={{film.img}} alt="">
+                  </div>
+                  <div class="card-body">
                     <i class="fa-regular fa-circle-play"></i>
-                    <i class="fa-solid fa-circle-plus"></i>
+                    <i class="fa-solid fa-circle-plus" title="Add to my list"></i>
                     <i class="fa-regular fa-thumbs-up"></i>
+                    <i class="fa-solid fa-circle-chevron-down float-end" type="button" data-bs-toggle="modal" (click)="selectedFilm(film)" data-bs-target="#exampleModal"></i>
                     <p>"{{film.original_title}}"</p>
                   </div>
                 </div>
+              </div>
+            </div>
           </div>
-            </a>
-          </ng-template>
-      </swiper>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="second-child" style="background-color: #141414;">
+    <p id="home">Continue watching</p>
+        <div class="row mt-3">
+          <div class="col-md-3 mb-3" *ngFor="let film of films;let i=index">
+            <div class="card second-card" >
+              <div class="d-flex align-items-center">
+                <img class="second-card-img" src={{film.img}} alt="">
+              </div>
+              <div class="card-body">
+                <i class="fa-regular fa-circle-play"></i>
+                <i class="fa-solid fa-circle-plus" title="Add to my list"></i>
+                <i class="fa-regular fa-thumbs-up"></i>
+                <i class="fa-solid fa-circle-chevron-down float-end" type="button" data-bs-toggle="modal" (click)="selectedFilm(film)" data-bs-target="#exampleModal"></i>
+                <p>"{{film.original_title}}"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div [style.background-image]="'url(' + selected_film?.img ?? '' + ')'" class="modal-content modal-background-img">
+      <div class="modal-overlay">
+      <div class="text-end">
+        <button type="button" class="btn-close me-3" data-bs-dismiss="modal" aria-label="Close">
+          <img src="../../../../assets/closebtn.svg" alt="">
+        </button>
+      </div>
+      <div class="modal-body">
+        <div  class=""></div>
+      </div>
     </div>
     </div>
   </div>
 </div>
+
 <!-- <section class="main-container"> -->
 
   <!-- <div class="my-list">

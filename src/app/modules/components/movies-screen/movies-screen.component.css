@@ -13,15 +13,15 @@
 }
 .main-top-movies{
   /* position: absolute; */
+  padding: 68px 68px 30px 58px;
   display: flex;
   align-items: center;
-  height: calc(720px - -600px);
-  padding: 68px 0px 30px 50px;
+  height: calc(720px - -1027px);
   /* overflow: hidden; */
 }
 .top-movies{
   /* position: relative; */
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .swiper{
   overflow:hidden;
@@ -65,114 +65,115 @@ p{
   padding-top: 20px;
   color: #fff;
 }
-.img-number{
-  width: 100px;
-  height: 160px;
-}
-.movie-img{
-  width: 130px;
-  height: 175px;
-  border-radius: 5px;
-}
-.box-img {
-    width: 230px;
-    height: 130px;
-    border-radius: 5px;
-  }
-  .a-box .card{
-    display: none;
-    width: inherit;
-  }
-  /* .movie-img:hover{
-    border-radius: 0 !important;
-    transform: scale(1.5);
-    transition:.5s;
-    height: auto;
-  } */
-  /* .movie-img:hover + .a-box div.card{
-    display: block !important;
-  } */
   .wrapper {
     margin: 0;
     padding: 0;
   }
   
   /* MAIN CONTIANER */
-  .main-container {
+  /* .main-container {
     padding-top: 50px;
     padding-left: 50px;
     padding-bottom: 50px;
     background-color: #141414;
     border-bottom: 8px solid #222;
     color: #fff;
-  }
-  
-  .a-box {
-  display: flex;
-  /* flex-direction: column; */
-  width: auto;
-  height: auto;
-  margin: 0 auto;
-  text-decoration: none;
-  } 
-  /* .a-box:hover {
-    border-radius: 0;
-    border-radius: 0 !important;
-    transform: scale(1.5);
-    transition:.5s;
-    height: auto;
   } */
-  .a-box .movie-img{
-    position: relative;
+  .card {
+    /* height: 200px; */
+    /* overflow: hidden; */
+    border: none;
+    background: transparent;
   }
-  .a-box .card{
-    position: absolute;
-    bottom: 0;
-    right: 0;
+  .card .card-body {
+    display: none;
+    background: #141414;
   }
-  .a-box:hover{
-    height: auto;
+  .card .card-img-top {
+    width: 130px;
+    height: 200px;
   }
-  .a-box:hover .movie-img{
-    border-radius: 0;
-    border-radius: 0 !important;
-    transform: scale(1.5);
-    transition:.5s;
-    height: auto;
+  .card:hover {
+    /* height: auto; */
+    /* overflow: auto; */
+    transform: scale(1.2);
+    transition: 0.5s;
+    z-index: 9 !important;
+    background: black;
   }
-  .a-box:hover .card{
+  .card:hover .card-body {
     display: block;
-    width: 231px;
-    height: 115px;
-    background: #201f1fa3;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 5px !important;
-    border-bottom-right-radius: 5px !important;
-    top: 100%;
-    left: 28%;
-    width: 197px;
-    z-index: 10 !important;
   }
-  .a-box:hover .img-number{
-    z-index: -1 !important;
+  .card:hover .card-img-top {
+    width: 303px;
+    height: 202px;
   }
-  .card i {
+  .card .number-img{
+    height: 200px;
+  }
+  .card:hover .number-img {
+    display: none;
+  }
+  .card-body i {
     color:#f3f3f3;
     padding-right: 5px;
     font-size: x-large;
     padding-top: 10px;
+    cursor: pointer;
   }
-  .card i:first-child{
+  .card-body i:first-child{
     padding-left: 10px;
   }
-  .card p{
+  .card-body i{
+    padding-left: 5px;
+    color: gray;
+  }
+  .card-body p{
     color: #f3f3f3;
     font-size:x-small;
     padding-left: 12px;
     padding-top: 5px;
   }
-  
+  .second-child{
+    padding:510px 0px 30px 68px;;
+  }
+.second-card{
+  width: 220px;
+}
+.second-card:hover {
+  /* height: auto; */
+  /* overflow: auto; */
+  transform: scale(1.4);
+  transition: 0.5s;
+  z-index: 9 !important;
+  background: black;
+}
+  .second-card-img{
+    width: 220px;
+    height: 220px;
+  }
+  .card:hover .card-img {
+    width: 403px;
+    height: 220px;
+  }
+  .modal-content{
+    background-image: url();
+    background: #141414;
+  }
+.modal-body{
+  height: auto;
+  padding: 0;
+}
+.modal-background-img{
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 400px;
+}
+.modal-overlay{
+  background: rgba(0,0,0,.4);
+  background-image: linear-gradient(0deg,rgba(0,0,0,.8) 0,transparent 60%,rgba(0,0,0,.8)); 
+  height: 100% !important; 
+}
   /* LINKS */
   .link {
     padding: 50px;

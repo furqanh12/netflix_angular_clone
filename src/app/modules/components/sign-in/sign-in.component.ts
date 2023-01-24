@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { SetUrl } from '../../../ngrx-redux/sharedDataReducer';import { Router } from '@angular/router';
 import { RegistrationService } from 'src/app/services/registration.services';
 
 @Component({
@@ -10,11 +10,12 @@ import { RegistrationService } from 'src/app/services/registration.services';
 })
 export class SignInComponent implements OnInit {
 
+  count$ = this.store.select(state => state.count);
   error:any
-  constructor( private router: Router, private reg_s:RegistrationService) { }
+  constructor( private router: Router, private reg_s:RegistrationService, private store:Store<{count:string}>) { }
 
   ngOnInit(): void {
-    localStorage.setItem('Url',this.router.url) 
+    this.store.dispatch(SetUrl({text:'login'})) 
   }
 
   signInFormValue(value:any){

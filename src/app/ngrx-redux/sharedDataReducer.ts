@@ -1,13 +1,11 @@
-// import { Action } from "@ngrx/store";
-// import { sharedState } from "./sharedState";
+import { createAction, props, createReducer, on,createSelector} from '@ngrx/store';
 
-// export function sharedDataReducer(state: sharedState, action:Action){
-//     switch(action.type){
-//         case 'SET-TOKEN':
-//             return {
-//                 token: state
-//             }
-//         default:
-//             return state;
-//     }
-// } 
+export const SetUrl = createAction('SETURL',props<{ text: string }>());
+
+
+export const initialState = '';
+
+export const counterReducer = createReducer(
+    initialState,
+    on(SetUrl, ((state,{text}) => text))
+);

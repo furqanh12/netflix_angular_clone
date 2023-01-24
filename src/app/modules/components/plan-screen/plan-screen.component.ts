@@ -1,7 +1,8 @@
 import { tokenName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { Store } from '@ngrx/store';
+import { SetUrl } from '../../../ngrx-redux/sharedDataReducer';
 import { RegistrationService } from 'src/app/services/registration.services';
 declare var $: any
 
@@ -13,9 +14,10 @@ declare var $: any
 export class PlanScreenComponent implements OnInit {
 
 
-  constructor(private router:Router, private reg_s:RegistrationService) {}
+  constructor(private router:Router, private reg_s:RegistrationService, private store:Store<{count:string}>) {}
 
   ngOnInit(): void {
+    this.store.dispatch(SetUrl({text:'plan'}))
   }
   plansValue(value: any){
     let token = localStorage.getItem('token')

@@ -1,112 +1,114 @@
 .second-header {
-    padding: 3px 20px 0 20px;
-    position: fixed;
-    top: 0;
-    display: grid;  
-    grid-gap:5px;
-    grid-template-columns: 1fr 4fr 1fr;
-    grid-template-areas: "nt mn mn sb . . . "; 
-    width: 100%;
-    margin-bottom: 0px;
-  }
-  .dark-header{
-    background-image: linear-gradient(180deg,rgb(0 0 0 / 90%) 100%,transparent);
-  }
-  .netflixLogo {
-    grid-area: nt;
-    object-fit: cover;
-    width: 100px;
-    max-height: 100%;
-    
-    padding-left: 30px;
-    padding-top: 0px;  
-  }
-  
-  .netflixLogo img {  
-    height: 65px;     
-  }
-  
-  #logo {
-    color: #E50914;  
-    margin: 0; 
-    padding: 0; 
-  }
-  
-  
-  .main-nav {
-    grid-area: mn;
-    padding: 20px 30px 0 20px;
-  }
-  
-  .main-nav a {
-    color: var(--light);
-    transition: color .4s;
-    color: #e5e5e5;
-    align-items: center;
-    font-size: 14px;
-    padding-left: 14px;
-    font-weight: 300;
-    text-decoration: none;
-    margin: 5px;
-    color: #ffffff;
-  }
-  
-  .main-nav a:hover {
-    color: var(--dark);
-  }
-  
-  .sub-nav {
-    grid-area: sb;
-    padding: 13px 40px 0 40px;
-  }
-  
-  .sub-nav a {
-    color: var(--light);
-    text-decoration: none;
-    margin: 5px;
-    color: #ffffff;
-  }
-  
-  .sub-nav a:hover {
-    color: var(--dark);
-  }
+  padding: 3px 20px 0 20px;
+  position: fixed;
+  top: 0;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 0fr 4fr 1fr;
+  grid-template-areas: 'nt mn mn sb . . . ';
+  width: 100%;
+  margin-bottom: 0px;
+}
+.dark-header {
+  background-image: linear-gradient(180deg, rgb(0 0 0 / 90%) 100%, transparent);
+}
+.netflixLogo {
+  grid-area: nt;
+  object-fit: cover;
+  width: 100px;
+  max-height: 100%;
+
+  padding-left: 30px;
+  padding-top: 0px;
+}
+
+.netflixLogo img {
+  height: 65px;
+}
+
+#logo {
+  color: #e50914;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav {
+  grid-area: mn;
+  padding: 22px 30px 0 40px;
+}
+
+.main-nav a {
+  color: var(--light);
+  transition: color 0.4s;
+  color: #e5e5e5;
+  align-items: center;
+  font-size: 14px;
+  padding-left: 14px;
+  font-weight: 300;
+  text-decoration: none;
+  margin: 5px;
+  color: #ffffff;
+}
+
+.main-nav a:hover {
+  color: var(--dark);
+}
+
+.sub-nav {
+  grid-area: sb;
+  padding: 18px 40px 0 40px;
+}
+
+.sub-nav a {
+  color: var(--light);
+  text-decoration: none;
+  margin: 5px;
+  color: #ffffff;
+}
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-header{
-    z-index: 10 !important;
-    position: absolute;
-    height: 68px;
-    width: 100%;
+header {
+  z-index: 10 !important;
+  position: absolute;
+  height: 68px;
+  width: 100%;
 }
-.navbar .navbar-brand img{
-    height: 68px;
-    width: 132.2px;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.navbar .navbar-brand img {
+  height: 68px;
+  width: 132.2px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
-.signin_btn{
-    color: white !important;
-    background-color: rgb(229,10,19) !important;
-    border-radius: 3px;
+.signin_btn {
+  color: white !important;
+  background-color: rgb(229, 10, 19) !important;
+  border-radius: 3px;
 }
 
-@media(max-width:480px){
-    .container{
-        height: 60px;
-        margin: 0 1%;   
-    }
-    .navbar-brand img{
-        height: 73px !important;
-        width: 93% !important;
-        padding-top: 0.5rem;
-        margin-bottom: 10px;
-    }
-    .signin_btn{
-        font-size: .9rem;
-        margin-top: 0.35rem;
-        padding: 0.25rem 0.5rem;
-        font-weight: 400;
-        line-height: normal;
-    }
+.dropdown-toggle:empty::after {
+  color: #ffffff;
+}
+.dropdown-button:hover {
+  border: none;
+}
+
+@media (max-width: 480px) {
+  .container {
+    height: 60px;
+    margin: 0 1%;
+  }
+  .navbar-brand img {
+    height: 73px !important;
+    width: 93% !important;
+    padding-top: 0.5rem;
+    margin-bottom: 10px;
+  }
+  .signin_btn {
+    font-size: 0.9rem;
+    margin-top: 0.35rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 400;
+    line-height: normal;
+  }
 }

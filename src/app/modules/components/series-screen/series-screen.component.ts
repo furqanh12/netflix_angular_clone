@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { Store } from '@ngrx/store';
+import { SetUrl } from '../../../ngrx-redux/sharedDataReducer';
 
 import { EntertainmentService } from 'src/app/services/entertainment.service';
 interface moviesObject {
@@ -17,16 +19,17 @@ interface moviesObject {
 export class SeriesScreenComponent implements OnInit {
   to_10_movies: moviesObject[];
 
-  constructor(private http:HttpClient, private entr_s:EntertainmentService) {}
+  constructor(private http:HttpClient, private entr_s:EntertainmentService, private store:Store<{count:string}>) {}
   films: Array<moviesObject>;
   poster_path: string;
   img: string;
   original_title: string;
   ngOnInit(): void {
-    this.entr_s.loadMovies().subscribe((movies:any)=>{
-      this.films = (movies?.results ?? []).map((item:moviesObject)=>{ return {...item,img:`https://image.tmdb.org/t/p/w500${item?.poster_path}`}})
-      this.to_10_movies=(this.films.sort((a:any,b:any)=>b.popularity-a.popularity)).filter((item:moviesObject,index:number)=>index <= 9 && item)
-    })
+    this.store.dispatch(SetUrl({text:'series'}))
+    // this.entr_s.loadMovies().subscribe((movies:any)=>{
+    //   this.films = (movies?.results ?? []).map((item:moviesObject)=>{ return {...item,img:`https://image.tmdb.org/t/p/w500${item?.poster_path}`}})
+    //   this.to_10_movies=(this.films.sort((a:any,b:any)=>b.popularity-a.popularity)).filter((item:moviesObject,index:number)=>index <= 9 && item)
+    // })
   }
 
 

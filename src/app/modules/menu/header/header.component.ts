@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { SetUrl } from '../../../ngrx-redux/sharedDataReducer';
 
 declare var $: any
 declare global {
@@ -14,12 +16,17 @@ declare global {
 })
 export class HeaderComponent implements OnInit {
 
+  count$ = this.store.select(state => state.count);
+
   url: any
   token: any
   nav:any
-  constructor(private router:Router) { }
+  show =['login','signup','plan','']
+  constructor(private router:Router, private store: Store<{count:string}>) { }
 
   ngOnInit(): void {
+    this.store.dispatch(SetUrl({text:'signup'}))
+    console.log(this.count$,"$");
     this.token = localStorage.getItem('token')
     document.getElementById("#second-header");
     window.addEventListener("scroll", (e) =>{
@@ -42,7 +49,6 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('token')
     this.router.navigateByUrl('login')
   }
-
   
 
 }

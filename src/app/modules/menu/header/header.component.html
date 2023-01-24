@@ -1,4 +1,4 @@
-<!-- <header *ngIf="!token">
+<header *ngIf="show.includes(count$ | async)">
     <nav class="navbar navbar-expand">
       <div class="container">
         <a class="navbar-brand" href="#">
@@ -6,19 +6,16 @@
         </a>
         <div class="collapse navbar-collapse me-auto" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <form *ngIf="url === 'login'">
-            <button class="btn signin_btn btn-danger" (click)="signIn()" type="submit">Sign In</button>
-          </form>
-          <form *ngIf="url !== 'login'">
+          <form *ngIf="(count$ | async) === 'login'">
             <button class="btn signin_btn btn-danger" (click)="signIn()" type="submit">Sign In</button>
           </form>
         </ul>
         </div>
       </div>
     </nav>
-  </header> -->
+  </header>
 
-  <header id="second-header"  class="second-header" *ngIf="token">
+  <header id="second-header"  class="second-header" *ngIf="!show.includes(count$ | async)">
     <div class="netflixLogo">
       <a id="logo" href="movies"><img src="../../../../assets/logo.png" alt="Logo Image"></a>
     </div>      
@@ -33,6 +30,17 @@
     <nav id="second-nav" class="sub-nav">
       <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
       <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>
-      <button class="btn signin_btn btn-danger" (click)="logOut()" type="submit">Sign Out</button>     
+      <button class="btn dropdown-button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="../../../../assets/dropdown-img.png" alt="">
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark">
+        <li><a class="dropdown-item active" href="#">Manage Profiles</a></li>
+        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-pencil"></i>Exit Profile</a></li>
+        <li><a class="dropdown-item" href="#">Transfer Profile</a></li>
+        <li><a class="dropdown-item" href="#">Account</a></li>
+        <li><a class="dropdown-item" href="#">Help Center</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" (click)="logOut()">Sign out of Netflix</a></li>
+      </ul>
     </nav>      
   </header>

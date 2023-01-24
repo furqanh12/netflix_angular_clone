@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-// import { StoreModule } from '@ngrx/store';
-
-// import { sharedDataReducer } from './ngrx-redux/sharedDataReducer';
 import { AppRoutingModule } from './app-routing.module';
+import { StoreModule } from '@ngrx/store';
+
+import { counterReducer } from './ngrx-redux/sharedDataReducer';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SwiperModule } from 'swiper/angular';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -42,9 +42,8 @@ import { SeriesScreenComponent } from './modules/components/series-screen/series
     HttpClientModule,
     SlickCarouselModule,
     SwiperModule,
-    CarouselModule
-    // StoreModule.forRoot({
-    // })
+    CarouselModule,
+    StoreModule.forRoot({count:counterReducer})
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

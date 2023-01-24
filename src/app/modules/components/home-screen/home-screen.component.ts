@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
+
+export interface FeatureState {
+  counter: number;
+}
 
 @Component({
   selector: 'app-home-screen',
@@ -8,11 +14,13 @@ import { Router } from '@angular/router';
 })
 export class HomeScreenComponent implements OnInit {
 
-  constructor(private router:Router) {
-  }
+  
+  constructor(private router:Router,) {
 
+  }
+  
   ngOnInit(): void {
-    localStorage.setItem('Url','signup') 
+
   }
   signUp(){
     this.router.navigateByUrl('signup');
