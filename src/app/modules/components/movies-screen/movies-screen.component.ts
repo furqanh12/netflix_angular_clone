@@ -4,22 +4,14 @@ import { SetUrl } from '../../../ngrx-redux/sharedDataReducer';
 import {
   Component,
   ElementRef,
-  HostListener,
   OnInit,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import SwiperCore, {Navigation, Pagination, Scrollbar, A11y} from 'swiper';
+import { moviesObject } from '../../../interfaces/movie.interface'
 
-// install Swiper modules
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 import {EntertainmentService} from 'src/app/services/entertainment.service';
-interface moviesObject {
-  poster_path: string;
-  img: string;
-  original_title: string;
-}
 
 @Component({
   selector: 'app-movies-screen',
@@ -28,10 +20,11 @@ interface moviesObject {
   encapsulation: ViewEncapsulation.None,
 })
 export class MoviesScreenComponent implements OnInit, moviesObject {
+
   @ViewChild('scrollMe') private scrollContainer: ElementRef;
+  
   private offset = 1200;
   private page = 1;
-  constructor(private http: HttpClient, private entr_s: EntertainmentService, private store:Store<{count:string}>) {}
   films: Array<moviesObject>;
   poster_path: string;
   img: string;
@@ -50,12 +43,18 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
   ];
   to_10_movies: Array<moviesObject> = [];
   selected_film: moviesObject = null;
+  _id:string;
+  liked: boolean = false;
+
+  constructor(private http: HttpClient, private entr_s: EntertainmentService, private store:Store<{count:string}>) {}
+
 
   ngOnInit(): void {
     // get movies for page 1
     this.store.dispatch(SetUrl({text:'movie'}))
     this.entr_s.loadMovies(this.page).subscribe(data => {
       this.films = data.result;
+      console.log(this.films);
       this.to_10_movies = this.films
         .sort((a: any, b: any) => b.popularity - a.popularity)
         .filter((item: moviesObject, index: number) => index <= 9 && item);
@@ -65,11 +64,9 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
   // get movies by scroll event and page number
   onscroll() {
     window.addEventListener('scroll', e => {
-      console.log(window.pageYOffset > this.offset);
       if (window.pageYOffset > this.offset) {
         this.offset += this.offset;
         this.page += 1;
-        console.log(this.page);
         this.entr_s.loadMovies(this.page).subscribe(data => {
           this.films = data.result;
           console.log(this.films);
@@ -79,13 +76,16 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
   }
 
   selectedFilm(film: moviesObject) {
-    console.log('selected film', film);
     this.selected_film = film;
   }
-  // onSlideChange() {
-  //   console.log('slide change');
-  // }
-  // onSwiper(swiper:any) {
-  //   console.log(swiper);
-  // }
+
+  addMovieToFav(movieId:string){
+    console.log(movieId);
+    const token = localStorage.getItem('token')
+    this.entr_s.addToFav(movieId, token).subscribe(res=>{
+      console.log(res);
+    })
+  }
+  
+
 }

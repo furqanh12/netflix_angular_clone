@@ -1,19 +1,70 @@
-<!-- <ngx-slick-carousel class="carousel" 
-#slickModal="slick-carousel" 
-[config]="slideConfig" >
-<div ngxSlickItem *ngFor="let film of to_10_movies;let i=index" class="slide">
-    <img class="movie-img" src={{film.img}} alt="">
+<div class="main-container">
+  <div class="background-img">
+    <div class="overlay">
+      <div>
+        <div class="main-top-movies">
+          <div class="location top-movies" id="home">
+            <p >Continue watching</p>
+            <div class="row mt-3">
+              <div class="col-md-3 mb-3" *ngFor="let film of to_10_movies;let i=index">
+                <div class="card" >
+                  <div class="d-flex align-items-center">
+                    <img *ngIf="i <= 9" class="number-img"  src={{top_movies[i]?.url}} alt="">
+                    <img class="card-img-top" src={{film.img}} alt="">
+                  </div>
+                  <div class="card-body">
+                    <i class="fa-regular fa-circle-play"></i>
+                    <i class="fa-solid fa-circle-plus" title="Add to my list"></i>
+                    <i class="fa-regular fa-thumbs-up"></i>
+                    <i class="fa-solid fa-circle-chevron-down float-end" type="button" data-bs-toggle="modal" (click)="selectedFilm(film)" data-bs-target="#exampleModal"></i>
+                    <p>"{{film.original_title}}"</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="second-child" style="background-color: #141414;">
+    <p id="home">Continue watching</p>
+        <div class="row mt-3">
+          <div class="col-md-3 mb-3" *ngFor="let film of films;let i=index">
+            <div class="card second-card" >
+              <div class="d-flex align-items-center">
+                <img class="second-card-img" src={{film.img}} alt="">
+              </div>
+              <div class="card-body">
+                <i class="fa-regular fa-circle-play"></i>
+                <i class="fa-solid fa-circle-plus" title="Add to my list"></i>
+                <i class="fa-regular fa-thumbs-up"></i>
+                <i class="fa-solid fa-circle-chevron-down float-end" type="button" data-bs-toggle="modal" (click)="selectedFilm(film)" data-bs-target="#exampleModal"></i>
+                <p>"{{film.original_title}}"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
 </div>
-</ngx-slick-carousel> -->
 
-<!-- <owl-carousel-o [options]="customOptions">
 
-    <ng-container *ngFor="let film of to_10_movies;let i=index">
 
-        <ng-template carouselSlide [id]="film.img">
-        <img class="movie-img" [src]="film.img" alt="">
-          </ng-template>
-
-    </ng-container>
-
-  </owl-carousel-o> -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div [style.background-image]="'url(' + selected_film?.img ?? '' + ')'" class="modal-content modal-background-img">
+      <div class="modal-overlay">
+      <div class="text-end">
+        <button type="button" class="btn-close me-3" data-bs-dismiss="modal" aria-label="Close">
+          <img src="../../../../assets/closebtn.svg" alt="">
+        </button>
+      </div>
+      <div class="modal-body">
+        <div  class=""></div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

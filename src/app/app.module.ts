@@ -21,6 +21,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { SignInComponent } from './modules/components/sign-in/sign-in.component';
 import { MoviesScreenComponent } from './modules/components/movies-screen/movies-screen.component';
 import { SeriesScreenComponent } from './modules/components/series-screen/series-screen.component';
+import { MyListComponent } from './modules/components/my-list/my-list.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { SeriesScreenComponent } from './modules/components/series-screen/series
     SignInComponent,
     MoviesScreenComponent,
     SeriesScreenComponent,
+    MyListComponent,
   ],
   imports: [
     BrowserModule,

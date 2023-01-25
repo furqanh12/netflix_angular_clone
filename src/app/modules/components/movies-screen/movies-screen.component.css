@@ -1,6 +1,3 @@
-/* @import 'swiper/css';
-@import 'swiper/css/navigation';
-@import 'swiper/css/pagination'; */
 @import "~swiper/swiper-bundle.min.css";
 .background-img{
   height: 720px;
@@ -19,10 +16,10 @@
   height: calc(720px - -1027px);
   /* overflow: hidden; */
 }
-.top-movies{
-  /* position: relative; */
-  /* overflow: hidden; */
-}
+/* .top-movies{
+  position: relative;
+  overflow: hidden;
+} */
 .swiper{
   overflow:hidden;
   padding-bottom: 20px;
@@ -88,6 +85,8 @@ p{
   .card .card-body {
     display: none;
     background: #141414;
+    transition: display 2s;
+    transition-delay: 2s;
   }
   .card .card-img-top {
     width: 130px;
@@ -128,6 +127,9 @@ p{
     padding-left: 5px;
     color: gray;
   }
+  .active {
+    fill: #f00;
+  }
   .card-body p{
     color: #f3f3f3;
     font-size:x-small;
@@ -140,21 +142,29 @@ p{
 .second-card{
   width: 220px;
 }
+.card-body {
+  display: none;
+}
+.second-card {
+  transition: transform 1s;
+}
 .second-card:hover {
+  transition-delay: 1s;
   /* height: auto; */
   /* overflow: auto; */
   transform: scale(1.4);
-  transition: 0.5s;
   z-index: 9 !important;
   background: black;
 }
+.second-card:hover .card-body {
+  transition-delay: 4s;
+  z-index: 9 !important;
+  background: rgb(16, 16, 11);
+  display: block;
+}
   .second-card-img{
-    width: 220px;
-    height: 220px;
-  }
-  .card:hover .card-img {
-    width: 403px;
-    height: 220px;
+    width: 232px;
+    height: 131px;
   }
   .modal-content{
     background-image: url();
