@@ -8,10 +8,11 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { moviesObject } from '../../../interfaces/movie.interface'
+import { moviesObject } from 'src/app/interface/movie.interface';
 
 
 import {EntertainmentService} from 'src/app/services/entertainment.service';
+import { AppState } from 'src/app/ngrx-redux/appState';
 
 @Component({
   selector: 'app-movies-screen',
@@ -46,7 +47,7 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
   _id:string;
   liked: boolean = false;
 
-  constructor(private http: HttpClient, private entr_s: EntertainmentService, private store:Store<{count:string}>) {}
+  constructor(private http: HttpClient, private entr_s: EntertainmentService, private store:Store<AppState>) {}
 
 
   ngOnInit(): void {
@@ -54,7 +55,6 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
     this.store.dispatch(SetUrl({text:'movie'}))
     this.entr_s.loadMovies(this.page).subscribe(data => {
       this.films = data.result;
-      console.log(this.films);
       this.to_10_movies = this.films
         .sort((a: any, b: any) => b.popularity - a.popularity)
         .filter((item: moviesObject, index: number) => index <= 9 && item);
@@ -69,7 +69,6 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
         this.page += 1;
         this.entr_s.loadMovies(this.page).subscribe(data => {
           this.films = data.result;
-          console.log(this.films);
         });
       }
     });
@@ -83,7 +82,6 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
     console.log(movieId);
     const token = localStorage.getItem('token')
     this.entr_s.addToFav(movieId, token).subscribe(res=>{
-      console.log(res);
     })
   }
   

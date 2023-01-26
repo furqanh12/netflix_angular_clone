@@ -85,8 +85,7 @@ p{
   .card .card-body {
     display: none;
     background: #141414;
-    transition: display 2s;
-    transition-delay: 2s;
+    transition: all 2s;
   }
   .card .card-img-top {
     width: 130px;
@@ -141,9 +140,6 @@ p{
   }
 .second-card{
   width: 220px;
-}
-.card-body {
-  display: none;
 }
 .second-card {
   transition: transform 1s;

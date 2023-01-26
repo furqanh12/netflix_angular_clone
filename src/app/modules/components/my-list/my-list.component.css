@@ -1,0 +1,253 @@
+p{
+    margin-bottom: 0 !important;
+    padding-top: 20px;
+    color: #fff;
+}
+
+.card {
+    /* height: 200px; */
+    /* overflow: hidden; */
+    border: none;
+    background: transparent;
+}
+.card .card-body {
+    display: none;
+    background: #141414;
+    transition: display 2s;
+    transition-delay: 2s;
+}
+.card .card-img-top {
+    width: 130px;
+    height: 200px;
+}
+.card:hover {
+    /* height: auto; */
+    /* overflow: auto; */
+    transform: scale(1.2);
+    transition: 0.5s;
+    z-index: 9 !important;
+    background: black;
+}
+.card:hover .card-body {
+    display: block;
+}
+.card:hover .card-img-top {
+    width: 303px;
+    height: 202px;
+}
+.card .number-img{
+    height: 200px;
+}
+.card:hover .number-img {
+    display: none;
+}
+.card-body i {
+    color:#f3f3f3;
+    padding-right: 5px;
+    font-size: x-large;
+    padding-top: 10px;
+    cursor: pointer;
+}
+.card-body i:first-child{
+    padding-left: 10px;
+}
+.card-body i{
+    padding-left: 5px;
+    color: gray;
+}
+.active {
+    fill: #f00;
+}
+.card-body p{
+    color: #f3f3f3;
+    font-size:x-small;
+    padding-left: 12px;
+    padding-top: 5px;
+}
+.second-child{
+    padding:510px 0px 30px 68px;;
+}
+.second-card{
+width: 220px;
+}
+.card-body {
+display: none;
+}
+.second-card {
+transition: transform 1s;
+}
+.second-card:hover {
+transition-delay: 1s;
+/* height: auto; */
+/* overflow: auto; */
+transform: scale(1.4);
+z-index: 9 !important;
+background: black;
+}
+.second-card:hover .card-body {
+transition-delay: 4s;
+z-index: 9 !important;
+background: rgb(16, 16, 11);
+display: block;
+}
+.second-card-img{
+    width: 232px;
+    height: 131px;
+}
+.modal-content{
+    background-image: url();
+    background: #141414;
+}
+.modal-body{
+height: auto;
+padding: 0;
+}
+.modal-background-img{
+background-size: cover;
+background-repeat: no-repeat;
+height: 400px;
+}
+.modal-overlay{
+background: rgba(0,0,0,.4);
+background-image: linear-gradient(0deg,rgba(0,0,0,.8) 0,transparent 60%,rgba(0,0,0,.8)); 
+height: 100% !important; 
+}
+/* LINKS */
+.link {
+    padding: 50px;
+}
+
+.sub-links ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.sub-links a {
+    color: var(--dark);
+    text-decoration: none;
+}
+
+.sub-links a:hover {
+    color: var(--dark);
+    text-decoration: underline;
+}
+
+.logos a{
+    padding: 10px;
+}
+
+.logo {
+    color: var(--dark);
+}
+
+    /* MEDIA QUERIES */
+    
+    @media(max-width: 900px) {
+    
+      header {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 
+        "nt nt nt  .  .  . sb . . . "
+        "mn mn mn mn mn mn  mn mn mn mn";
+      }
+    
+      .a-box {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(4, minmax(100px, 1fr));
+      }
+    
+    }
+    
+    @media(max-width: 700px) {
+    
+      header {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 
+        "nt nt nt  .  .  . sb . . . "
+        "mn mn mn mn mn mn  mn mn mn mn";
+      }
+    
+      .a-box {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(3, minmax(100px, 1fr));
+      }
+    
+      .sub-links ul {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(3, 1fr);
+      }
+       
+    }
+    
+    @media(max-width: 500px) {
+    
+      .wrapper {
+        font-size: 15px;
+      }
+    
+      header {
+        margin: 0;
+        padding: 20px 0 0 0;
+        position: static;
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas: 
+        "nt"    
+        "mn"
+        "sb";
+        text-align: center;
+      }
+    
+      .netflixLogo {
+        max-width: 100%;
+        margin: auto;
+        padding-right: 20px;
+      }
+    
+      .main-nav {
+        display: grid;
+        grid-gap: 0px;
+        grid-template-columns: repeat(1, 1fr);
+        text-align: center;
+      }
+      .a-box {
+        display: grid;
+        /* grid-gap: 20px; */
+        grid-template-columns: repeat(1, 1fr);
+        text-align: center;    
+      }
+    
+      /* .box a:hover {
+        transition: transform .3s;
+        -ms-transform: scale(1);
+        -webkit-transform: scale(1);  
+        transform: scale(1.2);
+      }
+     */
+      .logos {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        text-align: center;
+      }
+    
+      .sub-links ul {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(1, 1fr);
+        text-align: center;
+        font-size: 15px;
+      }
+  
+    }

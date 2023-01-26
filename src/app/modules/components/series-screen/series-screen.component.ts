@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { SetUrl } from '../../../ngrx-redux/sharedDataReducer';
 
 import { EntertainmentService } from 'src/app/services/entertainment.service';
+import { AppState } from 'src/app/ngrx-redux/appState';
 interface moviesObject {
   poster_path:string,
   img:string,
@@ -17,7 +18,7 @@ interface moviesObject {
 })
 export class SeriesScreenComponent implements OnInit {
   
-  constructor(private http:HttpClient, private entr_s:EntertainmentService, private store:Store<{count:string}>) {}
+  constructor(private http:HttpClient, private entr_s:EntertainmentService, private store:Store<AppState>) {}
   
   @ViewChild('scrollMe') private scrollContainer: ElementRef;
   

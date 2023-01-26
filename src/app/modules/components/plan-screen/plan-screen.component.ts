@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { SetUrl } from '../../../ngrx-redux/sharedDataReducer';
 import { RegistrationService } from 'src/app/services/registration.services';
+import { AppState } from 'src/app/ngrx-redux/appState';
 declare var $: any
 
 @Component({
@@ -14,7 +15,7 @@ declare var $: any
 export class PlanScreenComponent implements OnInit {
 
 
-  constructor(private router:Router, private reg_s:RegistrationService, private store:Store<{count:string}>) {}
+  constructor(private router:Router, private reg_s:RegistrationService, private store:Store<AppState>) {}
 
   ngOnInit(): void {
     this.store.dispatch(SetUrl({text:'plan'}))
