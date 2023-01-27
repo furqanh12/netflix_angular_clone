@@ -15,17 +15,17 @@ export class EntertainmentService {
     img:string,
     _id:string,
     original_title:string}>}>{
+      console.log(pageNo);
     return this.http.get<{status:String,result:Array<{poster_path:string, img:string, _id:string, original_title:string}>}>
     (environment.host + `api/movies/get_movies?page=${pageNo}`,{})
   }
 
   addToFav(movieId:string,token:string){
-    console.log(movieId);
     return this.http.post(environment.host + 'api/movies/add_fav',{movie_id:movieId},{ headers:{'Authorization':token} })
   }
 
-  getFavMovie(){
-    return this.http.get(environment.host + 'api/movies/get_fav',{})
+  getFavMovie(token:string){
+    return this.http.get(environment.host + 'api/movies/get_fav',{ headers:{'Authorization':token} })
   }
 
 }

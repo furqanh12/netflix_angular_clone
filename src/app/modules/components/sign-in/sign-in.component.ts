@@ -13,7 +13,7 @@ import { AppState } from 'src/app/ngrx-redux/appState';
 export class SignInComponent implements OnInit {
 
   count$ = this.store.select(state => state.count);
-  error:any
+  error:string
 
   constructor( private router: Router, private reg_s:RegistrationService, private store:Store<AppState>) { }
 
@@ -24,8 +24,8 @@ export class SignInComponent implements OnInit {
   signInFormValue(value:any){
     console.log(value);
     this.reg_s.signIn(value).subscribe((res: any)=>{
-      console.log('login page',res.user);
-      this.store.dispatch(userData(res.user))
+      console.log('login page',res);
+      this.store.dispatch(userData(res))
       localStorage.setItem('token',res.token)
       if(res.status === 'success' && res.token){
         this.router.navigateByUrl('movies')

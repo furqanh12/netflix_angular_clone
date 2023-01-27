@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/ngrx-redux/appState';
 import { SetUrl } from '../../../ngrx-redux/sharedDataReducer';
 
 declare var $: any
@@ -22,7 +23,7 @@ export class HeaderComponent implements OnInit {
   token: any
   nav:any
   show =['login','signup','plan','']
-  constructor(private router:Router, private store: Store<{count:string}>) { }
+  constructor(private router:Router, private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.store.dispatch(SetUrl({text:'signup'}))

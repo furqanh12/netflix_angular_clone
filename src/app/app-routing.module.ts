@@ -8,6 +8,7 @@ import { HomeScreenComponent } from './modules/components/home-screen/home-scree
 import { PlanScreenComponent } from './modules/components/plan-screen/plan-screen.component';
 import { MoviesScreenComponent } from './modules/components/movies-screen/movies-screen.component';
 import { SeriesScreenComponent } from './modules/components/series-screen/series-screen.component';
+import { MyListComponent } from './modules/components/my-list/my-list.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path : 'plans', component : PlanScreenComponent, canActivate: [AuthGuard]},
   {path : 'movies', component : MoviesScreenComponent, canActivate: [AuthGuard]},
   {path : 'series', component : SeriesScreenComponent, canActivate: [AuthGuard]},
+  {path : 'mylist', component : MyListComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

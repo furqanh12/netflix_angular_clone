@@ -24,7 +24,7 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
 
   @ViewChild('scrollMe') private scrollContainer: ElementRef;
   
-  private offset = 1200;
+  private offset = 1000;
   private page = 1;
   films: Array<moviesObject>;
   poster_path: string;
@@ -48,8 +48,8 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
   liked: boolean = false;
 
   constructor(private http: HttpClient, private entr_s: EntertainmentService, private store:Store<AppState>) {}
-
-
+  
+  
   ngOnInit(): void {
     // get movies for page 1
     this.store.dispatch(SetUrl({text:'movie'}))

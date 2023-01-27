@@ -15,17 +15,27 @@ import { SetUrl } from 'src/app/ngrx-redux/sharedDataReducer';
 export class MyListComponent implements OnInit {
   
   user$: Observable<User>;
+  favMovie:any
   
   constructor(private http: HttpClient,private entr_s: EntertainmentService, private store: Store<AppState>) {
     this.user$ = store.pipe(select(state => state.user))
     this.user$.subscribe(user => {
-      debugger
-      console.log('userdata in mylist',user);
+      console.log('userdata in mylist',user.data?.fav_movies);
     })
+    this.getFavMovies()
   }
   
   ngOnInit(): void {
     this.store.dispatch(SetUrl({text:'mylist'}))
+  }
+
+  getFavMovies(){
+    const token = localStorage.getItem('token')
+    console.log(token,"favmov");
+    this.entr_s.getFavMovie(token).subscribe(res =>{
+      console.log("object",res);
+      this.favMovie = res
+    })
   }
 
 }
