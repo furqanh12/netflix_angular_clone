@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { EntertainmentService } from 'src/app/services/entertainment.service';
 import { select, Store } from '@ngrx/store';
 import { AppState } from 'src/app/ngrx-redux/appState';
-import { User } from 'src/app/interface/user.interface';
+import { User } from 'src/app/interfaces/user.interface';
 import { Observable } from 'rxjs';
 import { SetUrl } from 'src/app/ngrx-redux/sharedDataReducer';
 
@@ -20,7 +20,7 @@ export class MyListComponent implements OnInit {
   constructor(private http: HttpClient,private entr_s: EntertainmentService, private store: Store<AppState>) {
     this.user$ = store.pipe(select(state => state.user))
     this.user$.subscribe(user => {
-      console.log('userdata in mylist',user.data?.fav_movies);
+      console.log('userdata in mylist',user.data);
     })
     this.getFavMovies()
   }
@@ -31,9 +31,7 @@ export class MyListComponent implements OnInit {
 
   getFavMovies(){
     const token = localStorage.getItem('token')
-    console.log(token,"favmov");
     this.entr_s.getFavMovie(token).subscribe(res =>{
-      console.log("object",res);
       this.favMovie = res
     })
   }

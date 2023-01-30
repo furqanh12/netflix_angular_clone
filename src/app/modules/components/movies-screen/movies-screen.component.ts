@@ -8,7 +8,7 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { moviesObject } from 'src/app/interface/movie.interface';
+import { moviesObject } from 'src/app/interfaces/movie.interface';
 
 
 import {EntertainmentService} from 'src/app/services/entertainment.service';
@@ -30,6 +30,9 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
   poster_path: string;
   img: string;
   original_title: string;
+  overview:string;
+  title:string;
+  vote_average:string;
   top_movies: Array<{url: string}> = [
     {url: '../../../../assets/1.png'},
     {url: '../../../../assets/2.png'},
@@ -44,6 +47,7 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
   ];
   to_10_movies: Array<moviesObject> = [];
   selected_film: moviesObject = null;
+
   _id:string;
   liked: boolean = false;
 
@@ -76,6 +80,7 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
 
   selectedFilm(film: moviesObject) {
     this.selected_film = film;
+    console.log(this.selected_film)
   }
 
   addMovieToFav(movieId:string){

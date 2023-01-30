@@ -8,6 +8,10 @@
   background-image: linear-gradient(0deg,rgba(0,0,0,.8) 0,transparent 60%,rgba(0,0,0,.8)); 
   height: 100%; 
 }
+.col-md-3 {
+  flex: 0 0 auto;
+  width: 18.666667%;
+}
 .main-top-movies{
   /* position: absolute; */
   padding: 68px 68px 30px 58px;
@@ -77,37 +81,38 @@ p{
     color: #fff;
   } */
   .card {
-    /* height: 200px; */
-    /* overflow: hidden; */
+    height: 200px;
     border: none;
-    background: transparent;
+  transition: transform 1s;
+  background: transparent;
   }
   .card .card-body {
-    display: none;
-    background: #141414;
-    transition: all 2s;
-  }
-  .card .card-img-top {
-    width: 130px;
-    height: 200px;
+    visibility: hidden;
   }
   .card:hover {
     /* height: auto; */
-    /* overflow: auto; */
-    transform: scale(1.2);
+    transition-delay: 1s !important;
+    transform: scale(1.4);
     transition: 0.5s;
     z-index: 9 !important;
-    background: black;
+    background: rgb(16, 16, 11);
+  }
+  .card .card-img-top {
+    width: 130px;
+    height: 170px;
   }
   .card:hover .card-body {
-    display: block;
+    transition-delay: 0.9s;
+    z-index: 9 !important;
+    background: rgb(16, 16, 11);
+    visibility: visible;
   }
   .card:hover .card-img-top {
     width: 303px;
     height: 202px;
   }
   .card .number-img{
-    height: 200px;
+    height: 145px;
   }
   .card:hover .number-img {
     display: none;
@@ -136,7 +141,7 @@ p{
     padding-top: 5px;
   }
   .second-child{
-    padding:510px 0px 30px 68px;;
+    padding:410px 0px 30px 68px;;
   }
 .second-card{
   width: 220px;
@@ -146,39 +151,71 @@ p{
 }
 .second-card:hover {
   transition-delay: 1s;
-  /* height: auto; */
-  /* overflow: auto; */
   transform: scale(1.4);
   z-index: 9 !important;
   background: black;
 }
 .second-card:hover .card-body {
-  transition-delay: 4s;
+  transition-delay: 0.9s;
   z-index: 9 !important;
   background: rgb(16, 16, 11);
-  display: block;
+  visibility: visible;
 }
   .second-card-img{
     width: 232px;
     height: 131px;
   }
-  .modal-content{
-    background-image: url();
-    background: #141414;
-  }
 .modal-body{
   height: auto;
   padding: 0;
+  background-color: #141414;
 }
 .modal-background-img{
   background-size: cover;
   background-repeat: no-repeat;
+  border-radius: 0;
   height: 400px;
 }
 .modal-overlay{
-  background: rgba(0,0,0,.4);
-  background-image: linear-gradient(0deg,rgba(0,0,0,.8) 0,transparent 60%,rgba(0,0,0,.8)); 
+  /* background: rgba(0,0,0,.4);
+  background-image: linear-gradient(0deg,rgba(0,0,0,.8) 0,transparent 90%,rgba(0,0,0,.8));  */
   height: 100% !important; 
+}
+.modal-body .height-controll{
+  display: flex;
+  align-items: center;
+  height: calc(400px - -150px);
+}
+.modal-body h1{
+  color: #fff;
+  font-size: xxx-large;
+  font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+  font-weight: 900;
+}
+.modal-body .button-controlls{
+  padding: 25px 50px;
+  height: calc(400px - 200px);
+}
+.modal-body .btn-icon{
+  display: flex;
+}
+.modal-body .button-controlls button{
+  color: black;
+  background-color: #fff;
+  padding: 3px 30px;
+}
+.modal-body .button-controlls i{
+  color: gray;
+}
+.modal-body .detail-content{
+  padding: 25px 50px;
+}
+.modal-body .detail-content p{
+  color: #fff;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 26px;
+  font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
 }
   /* LINKS */
   .link {

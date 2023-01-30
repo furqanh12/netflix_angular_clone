@@ -7,13 +7,14 @@
             <p >Continue watching</p>
             <div class="row mt-3">
               <div class="col-md-3 mb-3" *ngFor="let film of to_10_movies;let i=index">
-                <div class="card" >
+                <div class="card first-card" >
                   <div class="d-flex align-items-center">
                     <img *ngIf="i <= 9" class="number-img"  src={{top_movies[i]?.url}} alt="">
                     <img class="card-img-top" src={{film.img}} alt="">
                   </div>
                   <div class="card-body">
                     <i class="fa-regular fa-circle-play"></i>
+                    <!-- <i style="border:solid 1px gray; border-radius:100%" class="fa-solid fa-check"></i> -->
                     <i class="fa-solid fa-circle-plus" title="Add to my list"></i>
                     <i class="fa-regular fa-thumbs-up"></i>
                     <i class="fa-solid fa-circle-chevron-down float-end" type="button" data-bs-toggle="modal" (click)="selectedFilm(film)" data-bs-target="#exampleModal"></i>
@@ -32,7 +33,7 @@
     <p id="home">Continue watching</p>
         <div class="row mt-3">
           <div class="col-md-3 mb-3" *ngFor="let film of films;let i=index">
-            <div class="card second-card delay-1" >
+            <div class="card second-card" >
               <div class="d-flex align-items-center">
                 <img class="second-card-img" src={{film.img}} alt="">
               </div>
@@ -54,17 +55,36 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
-    <div [style.background-image]="'url(' + selected_film?.img ?? '' + ')'" class="modal-content modal-background-img">
-      <div class="modal-overlay">
-      <div class="text-end">
-        <button type="button" class="btn-close me-3" data-bs-dismiss="modal" aria-label="Close">
-          <img src="../../../../assets/closebtn.svg" alt="">
-        </button>
-      </div>
-      <div class="modal-body">
-        <div  class=""></div>
-      </div>
-    </div>
+    <div class="modal-body">
+      <section class="section-1">
+        <div [style.background-image]="'url(' + selected_film?.img ?? '' + ')'" class="modal-content modal-background-img">
+          <div class="modal-overlay">   
+              <button type="button" class="btn-close me-3" data-bs-dismiss="modal" aria-label="Close">
+                <img src="../../../../assets/closebtn.svg" alt="">
+              </button>
+           <div class="height-controll">
+            <div class="button-controlls">
+              <h1>{{selected_film?.title}}</h1>
+              <div class="btn-icon">
+              <button class="btn d-flex align-items-center"><i class="fa-sharp fa-solid fa-play fa-2x" style="color: black; padding-right: 5px;"></i>Play</button>
+              <i class="fa-solid fa-circle-plus fa-2x icon" title="Add to my list"></i>
+              <i class="fa-regular fa-thumbs-up fa-2x icon" (click)="addMovieToFav(selected_film?._id)"></i>
+              </div>
+            </div>
+           </div>
+          </div>
+          </div>
+      </section>
+      <section class="section-2">
+        <div class="row detail-content">
+          <div class="col-md-8 detail-content-left">
+            <p>{{selected_film?.overview}}</p>
+          </div>
+          <div class="col-md-4 detail-content-right">
+            <p>{{selected_film?.vote_average}}</p>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
 </div>

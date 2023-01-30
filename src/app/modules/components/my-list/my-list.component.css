@@ -3,6 +3,10 @@ p{
     padding-top: 20px;
     color: #fff;
 }
+.col-md-2 {
+  flex: 0 0 auto;
+  width: 18.666667%;
+}
 
 .card {
     /* height: 200px; */
@@ -65,7 +69,7 @@ p{
     padding-top: 5px;
 }
 .second-child{
-    padding:510px 0px 30px 68px;;
+    padding:110px 0px 30px 68px;;
 }
 .second-card{
 width: 220px;
