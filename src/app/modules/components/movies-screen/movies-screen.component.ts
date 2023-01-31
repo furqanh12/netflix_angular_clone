@@ -33,6 +33,8 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
   overview:string;
   title:string;
   vote_average:string;
+  release_date:string;
+  vote_count:string;
   top_movies: Array<{url: string}> = [
     {url: '../../../../assets/1.png'},
     {url: '../../../../assets/2.png'},
