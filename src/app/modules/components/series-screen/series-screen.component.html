@@ -1,23 +1,72 @@
 <div class="main-container">
   <div class="background-img">
     <div class="overlay">
+      <div class="discription-container" style="position: absolute;">
+      </div>
+      <div class="cover-button-container d-flex align-items-center">
+        <div>
+          <h1>{{movieTitle}}</h1>
+        <p class="mb-3">{{movieOverview}}</p>
+        <button class="btn color-primery">
+          <i class="fa-sharp fa-solid fa-play fa-2x" style="color: black; padding-right: 5px;"></i>
+          Play
+        </button>
+        <button class="color-secondary hasLabel hasIcon ltr-1jtux27 mt-3" data-uia="billboard-more-info" type="button">
+          <div class="d-flex">
+            <div class="ltr-1ol9m1e">
+              <div class="medium ltr-1evcx25" role="presentation">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="Hawkins-Icon Hawkins-Icon-Standard">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3ZM1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM13 10V18H11V10H13ZM12 8.5C12.8284 8.5 13.5 7.82843 13.5 7C13.5 6.17157 12.8284 5.5 12 5.5C11.1716 5.5 10.5 6.17157 10.5 7C10.5 7.82843 11.1716 8.5 12 8.5Z" fill="currentColor">
+                  </path>
+                </svg>
+              </div>
+            </div>
+            <div class="ltr-14rufaj" style="width:1rem">
+            </div>
+            <span class="ltr-j0gpa2">More Info</span>
+          </div>
+        </button>
+        </div>
+      </div>
       <div>
         <div class="main-top-movies">
           <div class="location top-movies" id="home">
             <p >Continue watching</p>
             <div class="row mt-3">
               <div class="col-md-3 mb-3" *ngFor="let film of to_10_movies;let i=index">
-                <div class="card" >
+                <div class="card first-card" >
                   <div class="d-flex align-items-center">
                     <img *ngIf="i <= 9" class="number-img"  src={{top_movies[i]?.url}} alt="">
                     <img class="card-img-top" src={{film.img}} alt="">
                   </div>
                   <div class="card-body">
-                    <i class="fa-regular fa-circle-play"></i>
-                    <i class="fa-solid fa-circle-plus" title="Add to my list"></i>
-                    <i class="fa-regular fa-thumbs-up"></i>
-                    <i class="fa-solid fa-circle-chevron-down float-end" type="button" data-bs-toggle="modal" (click)="selectedFilm(film)" data-bs-target="#exampleModal"></i>
-                    <p>"{{film.original_title}}"</p>
+                    <div class="container-fluid">
+                      <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center">
+                          <i class="fa-regular fa-circle-play"></i>
+                          <i class="fa-solid fa-circle-plus" title="Add to my list"></i>
+                          <i (click)="liked = !liked" [class.active]="liked" class="fa-regular fa-thumbs-up" (click)="addMovieToFav(film._id)"></i>
+                        </div>
+                        <div>
+                          <i class="fa-solid fa-circle-chevron-down float-end" type="button" data-bs-toggle="modal" (click)="selectedFilm(film)" data-bs-target="#exampleModal"></i>
+                        </div>
+                      </div>
+                      <div data-uia="videoMetadata--container col-md-12" class="videoMetadata--container">
+                        <div class="row" style="font-size: x-small; color: #fff; padding-top: 10px;">
+                          <span class="match-score-wrapper me-2 d-flex">
+                            <span style="color: #46d369;" class="match-score">{{film?.vote_count}}% Match</span>
+                            <span style="padding-left: 5px; padding-right: 5px;" class="year">2023</span>
+                            <span class="maturity-number">16+</span>
+                            <span style="margin-left: 5px;" class="player-feature-badge">HD</span>
+                          </span>
+                          <ul class="d-flex mt-2">
+                            <li>Voilent</li>
+                            <li>grity</li>
+                            <li>Fantasy TV</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -37,13 +86,34 @@
                 <img class="second-card-img" src={{film.img}} alt="">
               </div>
               <div class="card-body">
-                <i class="fa-regular fa-circle-play"></i>
-                <i class="fa-solid fa-circle-plus" title="Add to my list"></i>
-                <i class="fa-regular fa-thumbs-up"></i>
-                <i class="fa-solid fa-circle-chevron-down float-end" type="button" data-bs-toggle="modal" (click)="selectedFilm(film)" data-bs-target="#exampleModal"></i>
-                <p>"{{film.original_title}}"</p>
+                <div class="container-fluid">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <i class="fa-regular fa-circle-play"></i>
+                      <i class="fa-solid fa-circle-plus" title="Add to my list"></i>
+                      <i (click)="liked = !liked" [class.active]="liked" class="fa-regular fa-thumbs-up" (click)="addMovieToFav(film._id)"></i>
+                    </div>
+                    <div>
+                      <i class="fa-solid fa-circle-chevron-down float-end" type="button" data-bs-toggle="modal" (click)="selectedFilm(film)" data-bs-target="#exampleModal"></i>
+                    </div>
+                  </div>
+                  <div data-uia="videoMetadata--container col-md-12" class="videoMetadata--container">
+                    <div class="row" style="font-size: x-small; color: #fff; padding-top: 10px;">
+                      <span class="match-score-wrapper me-2 d-flex">
+                        <span style="color: #46d369;" class="match-score">{{film?.vote_count}}% Match</span>
+                        <span style="padding-left: 5px; padding-right: 5px;" class="year">2023</span>
+                        <span class="maturity-number">16+</span>
+                        <span style="margin-left: 5px;" class="player-feature-badge">HD</span>
+                      </span>
+                      <ul class="d-flex mt-2">
+                        <li>Voilent</li>
+                        <li>grity</li>
+                        <li>Fantasy TV</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
           </div>
         </div>
   </div>
@@ -54,17 +124,68 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
-    <div [style.background-image]="'url(' + selected_film?.img ?? '' + ')'" class="modal-content modal-background-img">
-      <div class="modal-overlay">
-      <div class="text-end">
-        <button type="button" class="btn-close me-3" data-bs-dismiss="modal" aria-label="Close">
-          <img src="../../../../assets/closebtn.svg" alt="">
-        </button>
-      </div>
-      <div class="modal-body">
-        <div  class=""></div>
-      </div>
-    </div>
+    <div class="modal-body">
+      <section class="section-1">
+        <div [style.background-image]="'url(' + selected_film?.img ?? '' + ')'" class="modal-content modal-background-img">
+          <div class="overlay">
+            <button type="button" class="btn me-3 float-end" data-bs-dismiss="modal" aria-label="Close">
+              <img src="../../../../assets/closebtn.svg" alt="">
+            </button>
+            <div class="height-controll">
+              <div class="button-controlls">
+                <h1>{{selected_film?.title}}</h1>
+                <div class="btn-icon">
+                  <button class="btn d-flex align-items-center"><i class="fa-sharp fa-solid fa-play fa-2x" style="color: black; padding-right: 5px;"></i>Play</button>
+                  <i class="fa-solid fa-circle-plus fa-2x icon" title="Add to my list"></i>
+                  <i class="fa-regular fa-thumbs-up fa-2x icon" (click)="addMovieToFav(selected_film?._id)"></i>
+                </div>
+              </div>
+           </div>
+          </div>
+          </div>
+      </section>
+      <section class="section-2">
+        <div class="container-fluid">
+          <div class="row">
+            <div data-uia="videoMetadata--container col-md-6" class="videoMetadata--container">
+              <div class="row" style="padding-left: 46px; padding-top: 40px;">
+                <div class="first-line col-auto">
+                  <span class="match-score-wrapper me-2">
+                    <div class="show-match-score rating-inner">
+                    <span class="match-score">{{selected_film?.vote_count}}% Match</span>
+                  </div>
+                </span>
+                </div>
+                <div class="second-line col-md-4">
+                <span class="year">2023</span>
+                <a><span class="maturity-rating ">
+                  <span class="maturity-number">16+</span>
+                </span></a><span class="duration">2 Seasons</span>
+                <span class="player-feature-badge">HD</span>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="ltr-18tpq4v"><path fill-rule="evenodd" clip-rule="evenodd" d="M21.9781 7.51999H22.262C23.3699 8.81828 24 10.4801 24 12.2077C24 13.7414 23.5049 15.2301 22.6221 16.4453H22.3347H21.85H21.5661C22.5598 15.2613 23.1206 13.7691 23.1206 12.2077C23.1206 10.4489 22.404 8.75596 21.1611 7.51999H21.445H21.9781ZM6.91381 16.4795H8.87336V7.52653H6.42566L0 16.4795H2.87701L3.63174 15.2955H6.91381V16.4795ZM4.8625 13.4298H6.92592V10.2239L4.8625 13.4298ZM12.3019 9.62285C13.6209 9.62285 14.6838 10.6926 14.6838 12.0048C14.6838 13.3204 13.6209 14.3902 12.3019 14.3902H11.6787V9.62285H12.3019ZM12.5442 16.4744C15.0127 16.4744 17.0207 14.4698 17.0207 12.0048C17.0207 9.52937 15.0335 7.52828 12.565 7.52828H12.5373H9.79877V16.4778H12.5442V16.4744ZM20.0102 7.51999H19.7263H19.1932H18.9093C20.1522 8.75596 20.8688 10.4489 20.8688 12.2077C20.8688 13.7691 20.308 15.2613 19.3143 16.4453H19.5982H20.0829H20.3634C21.2531 15.2301 21.7482 13.7414 21.7482 12.2077C21.7482 10.4801 21.1181 8.81828 20.0102 7.51999ZM17.4745 7.51999H17.7584C18.8663 8.81828 19.4895 10.4801 19.4895 12.2077C19.4895 13.7414 19.0013 15.2301 18.1116 16.4453H17.8277H17.3465H17.0626C18.0493 15.2613 18.6101 13.7691 18.6101 12.2077C18.6101 10.4489 17.9004 8.75596 16.6575 7.51999H16.9345H17.4745Z" fill="currentColor">
+                      </path>
+                    </svg>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="Hawkins-Icon Hawkins-Icon-Small"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 1.75C0 1.33579 0.335786 1 0.75 1H15.25C15.6642 1 16 1.33579 16 1.75V11.25C16 11.6642 15.6642 12 15.25 12H12.75V14C12.75 14.2652 12.61 14.5106 12.3817 14.6456C12.1535 14.7806 11.8709 14.785 11.6386 14.6572L6.80736 12H0.75C0.335786 12 0 11.6642 0 11.25V1.75ZM1.5 2.5V10.5H7H7.19264L7.36144 10.5928L11.25 12.7315V11.25V10.5H12H14.5V2.5H1.5ZM6 5.75L3 5.75V4.25L6 4.25V5.75ZM13 7.25H10V8.75H13V7.25ZM8 8.75L3 8.75V7.25L8 7.25V8.75ZM13 4.25H8V5.75H13V4.25Z" fill="currentColor">
+                    </path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row detail-content">
+            <div class="col-md-8 detail-content-left">
+              <p>{{selected_film?.overview}}</p>
+            </div>
+            <div class="col-md-4 detail-content-right">
+              <p>Cast: <a>Sam Corlett, Leo Suter, Frida Gustavsson more</a></p>
+              <p>Geners: <a>Period Pieces TV Dramas, TV Action & Adventure</a></p>
+              <p>This show is: <a>ViolentDarkExciting</a></p>
+              <p>Rating: <a>{{selected_film?.vote_average}}</a></p>
+              <p style="padding-bottom: 15px;">Release Date: <a>{{selected_film?.release_date}}</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
 </div>
