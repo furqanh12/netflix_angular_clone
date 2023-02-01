@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { moviesObject } from '../interfaces/movie.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,8 @@ export class EntertainmentService {
   
   constructor(private http:HttpClient) { }
 
-  loadMovies(pageNo:number):Observable<{status:String,result:Array<{poster_path:string,
-    img:string,
-    _id:string,
-    original_title:string}>}>{
-      console.log(pageNo);
-    return this.http.get<{status:String,result:Array<{poster_path:string, img:string, _id:string, original_title:string}>}>
+  loadMovies(pageNo:number):Observable<{status:String,result:Array<moviesObject>}>{
+    return this.http.get<{status:String,result:Array<moviesObject>}>
     (environment.host + `api/movies/get_movies?page=${pageNo}`,{})
   }
 

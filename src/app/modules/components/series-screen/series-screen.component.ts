@@ -1,33 +1,38 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ElementRef, ViewChild, } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { SetUrl } from '../../../ngrx-redux/sharedDataReducer';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
+import { moviesObject } from 'src/app/interfaces/movie.interface';
 
-import { EntertainmentService } from 'src/app/services/entertainment.service';
+
+import {EntertainmentService} from 'src/app/services/entertainment.service';
 import { AppState } from 'src/app/ngrx-redux/appState';
-interface moviesObject {
-  poster_path:string,
-  img:string,
-  original_title:string;
-}
-
 @Component({
   selector: 'app-series-screen',
   templateUrl: './series-screen.component.html',
   styleUrls: ['./series-screen.component.css']
 })
-export class SeriesScreenComponent implements OnInit {
-  
-  constructor(private http:HttpClient, private entr_s:EntertainmentService, private store:Store<AppState>) {}
-  
+export class SeriesScreenComponent implements OnInit, moviesObject {
+
   @ViewChild('scrollMe') private scrollContainer: ElementRef;
   
-  private offset = 1200;
+  private offset = 1000;
   private page = 1;
   films: Array<moviesObject>;
   poster_path: string;
   img: string;
   original_title: string;
+  overview:string;
+  title:string;
+  vote_average:string;
+  release_date:string;
+  vote_count:string;
   top_movies: Array<{url: string}> = [
     {url: '../../../../assets/1.png'},
     {url: '../../../../assets/2.png'},
@@ -42,27 +47,34 @@ export class SeriesScreenComponent implements OnInit {
   ];
   to_10_movies: Array<moviesObject> = [];
   selected_film: moviesObject = null;
+  movieTitle:string
+  movieOverview:string
+  _id:string;
+  liked: boolean = false;
 
+  constructor(private http: HttpClient, private entr_s: EntertainmentService, private store:Store<AppState>) {}
+  
+  
   ngOnInit(): void {
-    this.store.dispatch(SetUrl({text:'series'}))
+    // get movies for page 1
+    this.store.dispatch(SetUrl({text:'movie'}))
     this.entr_s.loadMovies(this.page).subscribe(data => {
       this.films = data.result;
       this.to_10_movies = this.films
         .sort((a: any, b: any) => b.popularity - a.popularity)
         .filter((item: moviesObject, index: number) => index <= 9 && item);
+        console.log(this.movieTitle = this.to_10_movies[6].title, this.movieOverview = this.to_10_movies[6].overview);
     });
     this.onscroll();
   }
-
+  // get movies by scroll event and page number
   onscroll() {
     window.addEventListener('scroll', e => {
-      console.log(window.pageYOffset > this.offset);
       if (window.pageYOffset > this.offset) {
         this.offset += this.offset;
         this.page += 1;
         this.entr_s.loadMovies(this.page).subscribe(data => {
           this.films = data.result;
-          console.log(this.films);
         });
       }
     });
@@ -70,8 +82,15 @@ export class SeriesScreenComponent implements OnInit {
 
   selectedFilm(film: moviesObject) {
     this.selected_film = film;
+    console.log(this.selected_film)
   }
 
+  addMovieToFav(movieId:string){
+    console.log(movieId);
+    const token = localStorage.getItem('token')
+    this.entr_s.addToFav(movieId, token).subscribe(res=>{
+    })
+  }
 
 
 }

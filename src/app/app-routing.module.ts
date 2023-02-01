@@ -16,8 +16,10 @@ const routes: Routes = [
   {path : 'login', component : SignInComponent },
   {path : 'signup', component : SignUpComponent},
   {path : 'plans', component : PlanScreenComponent, canActivate: [AuthGuard]},
+  {path : 'home', component : MoviesScreenComponent, canActivate: [AuthGuard]},
+  {path : 'tvshow', component : SeriesScreenComponent, canActivate: [AuthGuard]},
   {path : 'movies', component : MoviesScreenComponent, canActivate: [AuthGuard]},
-  {path : 'series', component : SeriesScreenComponent, canActivate: [AuthGuard]},
+  {path : 'new&popular', component : SeriesScreenComponent, canActivate: [AuthGuard]},
   {path : 'mylist', component : MyListComponent, canActivate: [AuthGuard]},
 ];
 

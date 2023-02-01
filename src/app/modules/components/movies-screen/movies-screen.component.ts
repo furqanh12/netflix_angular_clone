@@ -49,7 +49,8 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
   ];
   to_10_movies: Array<moviesObject> = [];
   selected_film: moviesObject = null;
-
+  movieTitle:string
+  movieOverview:string
   _id:string;
   liked: boolean = false;
 
@@ -64,6 +65,7 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
       this.to_10_movies = this.films
         .sort((a: any, b: any) => b.popularity - a.popularity)
         .filter((item: moviesObject, index: number) => index <= 9 && item);
+        console.log(this.movieTitle = this.to_10_movies[4].title, this.movieOverview = this.to_10_movies[4].overview);
     });
     this.onscroll();
   }

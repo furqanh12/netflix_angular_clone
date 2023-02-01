@@ -6,7 +6,7 @@ import { StoreConfig, StoreModule } from '@ngrx/store';
 
 import { sharedDataReducer } from './ngrx-redux/sharedDataReducer';
 import { userReducer } from './ngrx-redux/userReducer';
-import { User } from './interface/user.interface';
+import { User } from './interfaces/user.interface';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SwiperModule } from 'swiper/angular';
 import { CarouselModule } from 'ngx-owl-carousel-o';

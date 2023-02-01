@@ -1,5 +1,5 @@
-import { createAction, props, createReducer, on} from '@ngrx/store';
-import { User } from '../interface/user.interface';
+import { createAction, props, createReducer, on } from '@ngrx/store';
+import { User } from '../interfaces/user.interface';
 
 export const userData = createAction('[SignIn PAGE] USER DATA',props<User>())
 
@@ -19,9 +19,10 @@ export const initialState: User = {
 
 export const userReducer = createReducer(initialState,
     on(userData, (state,action)=> {
-        console.log('action data', action);
+        console.log('action data', action.data);
         return({
-        ...state,
-        data: action.data
-    })})
-    )
+            ...state,
+            data: action.data
+        })
+    })
+)

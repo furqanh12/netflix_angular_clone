@@ -6,6 +6,7 @@ import { AppState } from 'src/app/ngrx-redux/appState';
 import { User } from 'src/app/interfaces/user.interface';
 import { Observable } from 'rxjs';
 import { SetUrl } from 'src/app/ngrx-redux/sharedDataReducer';
+import { moviesObject } from 'src/app/interfaces/movie.interface';
 
 @Component({
   selector: 'app-my-list',
@@ -16,6 +17,8 @@ export class MyListComponent implements OnInit {
   
   user$: Observable<User>;
   favMovie:any
+  selected_film: moviesObject = null;
+
   
   constructor(private http: HttpClient,private entr_s: EntertainmentService, private store: Store<AppState>) {
     this.user$ = store.pipe(select(state => state.user))
@@ -34,6 +37,11 @@ export class MyListComponent implements OnInit {
     this.entr_s.getFavMovie(token).subscribe(res =>{
       this.favMovie = res
     })
+  }
+
+  selectedFilm(film: moviesObject) {
+    this.selected_film = film;
+    console.log(this.selected_film)
   }
 
 }

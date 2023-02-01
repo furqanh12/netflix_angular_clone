@@ -10,8 +10,7 @@ url: string | null | undefined;
   constructor() { }
 
   ngOnInit(): void {
-    this.url = localStorage.getItem('Url')
-    console.log(this.url)
+    this.url = window.localStorage.getItem('Url')
   }
 
 }
