@@ -23,7 +23,7 @@ export class MyListComponent implements OnInit {
   constructor(private http: HttpClient,private entr_s: EntertainmentService, private store: Store<AppState>) {
     this.user$ = store.pipe(select(state => state.user))
     this.user$.subscribe(user => {
-      console.log('userdata in mylist',user.data);
+      console.log('userdata in mylist',user.fav_movies);
     })
     this.getFavMovies()
   }

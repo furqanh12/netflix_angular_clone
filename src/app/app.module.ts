@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { StoreConfig, StoreModule } from '@ngrx/store';
+import { StoreConfig, StoreModule, MetaReducer, ActionReducer, ActionReducerMap } from '@ngrx/store';
+import { localStorageSync } from 'ngrx-store-localstorage';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { sharedDataReducer } from './ngrx-redux/sharedDataReducer';
 import { userReducer } from './ngrx-redux/userReducer';
-import { User } from './interfaces/user.interface';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SwiperModule } from 'swiper/angular';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -26,6 +27,17 @@ import { SeriesScreenComponent } from './modules/components/series-screen/series
 import { MyListComponent } from './modules/components/my-list/my-list.component';
 import { AppState } from './ngrx-redux/appState';
 
+
+ const reducers: ActionReducerMap<AppState> = {
+   count: sharedDataReducer,
+   user: userReducer
+ };
+
+ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return localStorageSync({keys: ['user']})(reducer);
+}
+
+const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
 @NgModule({
   declarations: [
@@ -48,15 +60,14 @@ import { AppState } from './ngrx-redux/appState';
     SlickCarouselModule,
     SwiperModule,
     CarouselModule,
-    StoreModule.forRoot({
-      count: sharedDataReducer,
-      user: userReducer
-    }, {
-      initialState: {
-        count: '',
-        user:{}
-      }
-    } as StoreConfig<AppState>)
+    
+    StoreModule.forRoot(
+      reducers,
+      {metaReducers}
+      ),
+    StoreDevtoolsModule.instrument({
+        maxAge: 25, // Retains last 25 states
+    }),
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

@@ -4,25 +4,23 @@ import { User } from '../interfaces/user.interface';
 export const userData = createAction('[SignIn PAGE] USER DATA',props<User>())
 
 export const initialState: User = {
-    data:{
-        createdAt: '',
-        email: '',
-        fav_movies: [],
-        password: '',
-        plan: '',
-        plan_expire: '',
-        updatedAt: '',
-        __v: 0,
-        _id: '',
-    }
+    createdAt: '',
+    email: '',
+    fav_movies: [],
+    password: '',
+    plan: '',
+    plan_expire: '',
+    updatedAt: '',
+    __v: 0,
+    _id: ''
 };
 
 export const userReducer = createReducer(initialState,
     on(userData, (state,action)=> {
-        console.log('action data', action.data);
+        console.log('action data', action.fav_movies);
         return({
             ...state,
-            data: action.data
+            fav_movies: action.fav_movies
         })
     })
 )

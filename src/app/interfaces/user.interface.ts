@@ -1,5 +1,5 @@
 export interface User {
-    data:{
+
         createdAt: string;
         email: string;
         fav_movies: Array<{
@@ -29,7 +29,6 @@ export interface User {
         updatedAt: string;
         __v: number;
         _id: string;
-    }
 }
 
 
