@@ -24,7 +24,7 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
 
   @ViewChild('scrollMe') private scrollContainer: ElementRef;
   
-  private offset = 1000;
+  private offset = 800;
   private page = 1;
   films: Array<moviesObject>;
   poster_path: string;

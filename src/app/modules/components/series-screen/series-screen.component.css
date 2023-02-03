@@ -17,6 +17,8 @@
 .overlay .cover-button-container h1{
   font-family: 'Lora', serif;
   width: 600px;
+  font-size: 70px;
+  font-weight: 900;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -252,7 +254,7 @@ p{
     margin-right: 5px;
   }
   .second-child{
-    padding:410px 0px 30px 68px;;
+    padding:300px 0px 30px 68px;;
   }
 .second-card{
   width: 220px;

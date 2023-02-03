@@ -27,20 +27,22 @@
     <a [routerLink]="['mylist']">My List</a>
     <a [routerLink]="">Browse by Languages</a>
   </nav>
-  <nav id="second-nav" class="sub-nav">
+  <nav id="second-nav" class="sub-nav d-flex align-items-center">
     <a [routerLink]=""><i class="fas fa-search sub-nav-logo"></i></a>
     <a [routerLink]=""><i class="fas fa-bell sub-nav-logo"></i></a>
-    <button class="btn dropdown-button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="../../../../assets/dropdown-img.png" alt="">
-    </button>
-    <ul class="dropdown-menu dropdown-menu-dark">
-      <li><a class="dropdown-item active" [routerLink]=""><i class="fa-solid fa-pencil"></i>Manage Profiles</a></li>
-      <li><a class="dropdown-item" [routerLink]=""><i class="fa-solid fa-arrow-up-right-from-square"></i>Exit Profile</a></li>
-      <li><a class="dropdown-item" [routerLink]="">Transfer Profile</a></li>
-      <li><a class="dropdown-item" [routerLink]="">Account</a></li>
-      <li><a class="dropdown-item" [routerLink]="">Help Center</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" (click)="logOut()">Sign out of Netflix</a></li>
-    </ul>
+    <div class="dropdown">
+      <button class="btn dropdown-button dropdown-toggle" disabled type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="../../../../assets/dropdown-img.png" alt="">
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark">
+        <li><a class="dropdown-item active" [routerLink]=""><i class="fa-solid fa-pencil"></i>Manage Profiles</a></li>
+        <li><a class="dropdown-item" [routerLink]=""><i class="fa-solid fa-arrow-up-right-from-square"></i>Exit Profile</a></li>
+        <li><a class="dropdown-item" [routerLink]="">Transfer Profile</a></li>
+        <li><a class="dropdown-item" [routerLink]="">Account</a></li>
+        <li><a class="dropdown-item" [routerLink]="">Help Center</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" (click)="logOut()">Sign out of Netflix</a></li>
+      </ul>
+    </div>
   </nav>      
 </header>
