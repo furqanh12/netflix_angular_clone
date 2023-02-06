@@ -11,7 +11,9 @@
                   <div class="d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
                       <i class="fa-regular fa-circle-play"></i>
-                      <i class="fa-solid fa-circle-plus" title="Add to my list"></i>
+                      <i class="fa-solid fa-check" title="Add to my list" (click)="removeFavMovie(movie._id)"></i>
+                      <i class="fa-regular fa-thumbs-up"></i>
+                      <i class="fa-solid fa-thumbs-up"></i>
                     </div>
                     <div>
                       <i class="fa-solid fa-circle-chevron-down float-end" type="button" data-bs-toggle="modal" (click)="selectedFilm(movie)" data-bs-target="#exampleModal"></i>
