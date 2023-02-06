@@ -1,4 +1,4 @@
-import { User } from "../interfaces/user.interface";
+import { User } from "../interface/user.interface";
 
 export interface AppState {
     count: string;

@@ -8,8 +8,12 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { moviesObject } from 'src/app/interfaces/movie.interface';
+import { moviesObject } from 'src/app/interface/movie.interface';
+// import Swiper core and required modules
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
+// install Swiper modules
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 import {EntertainmentService} from 'src/app/services/entertainment.service';
 import { AppState } from 'src/app/ngrx-redux/appState';
@@ -51,11 +55,16 @@ export class SeriesScreenComponent implements OnInit, moviesObject {
   movieOverview:string
   _id:string;
   liked: boolean = false;
+   alreadyInList:any;
+  filterMovie:any=[]
+  token:string;
 
   constructor(private http: HttpClient, private entr_s: EntertainmentService, private store:Store<AppState>) {}
   
   
   ngOnInit(): void {
+    this.token = localStorage.getItem('token')
+    this.getFav()
     // get movies for page 1
     this.store.dispatch(SetUrl({text:'movie'}))
     this.entr_s.loadMovies(this.page).subscribe(data => {
@@ -89,6 +98,35 @@ export class SeriesScreenComponent implements OnInit, moviesObject {
     console.log(movieId);
     const token = localStorage.getItem('token')
     this.entr_s.addToFav(movieId, token).subscribe(res=>{
+      this.getFav()
+    })
+  }
+
+  onSlideChange() {
+    console.log('slide change');
+  }
+
+  getFav(){
+    this.entr_s.getFavMovie(this.token).subscribe(fav =>{
+      this.alreadyInList = fav
+      console.log(this.alreadyInList);
+    })
+  }
+
+  filterFav(movieId:string, exist=false){
+    for (let i = 0; i < this.alreadyInList.length; i++) {
+      if(this.alreadyInList[i]._id === movieId){
+        return exist = true
+      }
+    }
+    console.log(exist);
+    return exist; 
+  }
+
+  removeFavMovie(movieId:string){
+    this.entr_s.removeFav(this.token,movieId).subscribe(result =>{
+      console.log('res',result);
+      this.getFav()
     })
   }
 

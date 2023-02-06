@@ -1,5 +1,5 @@
 import { createAction, props, createReducer, on } from '@ngrx/store';
-import { User } from '../interfaces/user.interface';
+import { User } from '../interface/user.interface';
 
 export const userData = createAction('[SignIn PAGE] USER DATA',props<User>())
 

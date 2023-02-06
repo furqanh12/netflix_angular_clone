@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { SetUrl } from '../../../ngrx-redux/sharedDataReducer';
 import {
   Component,
@@ -8,11 +8,17 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { moviesObject } from 'src/app/interfaces/movie.interface';
+import { moviesObject } from 'src/app/interface/movie.interface';
+// import Swiper core and required modules
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
+// install Swiper modules
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 import {EntertainmentService} from 'src/app/services/entertainment.service';
 import { AppState } from 'src/app/ngrx-redux/appState';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/interface/user.interface';
 
 @Component({
   selector: 'app-movies-screen',
@@ -53,12 +59,21 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
   movieOverview:string
   _id:string;
   liked: boolean = false;
+  alreadyInList:any;
+  filterMovie:any=[]
+  token:string;
 
   constructor(private http: HttpClient, private entr_s: EntertainmentService, private store:Store<AppState>) {}
-  
+  user$: Observable<User>;
   
   ngOnInit(): void {
     // get movies for page 1
+    // this.user$ = this.store.pipe(select(state => state.user))
+    // this.user$.subscribe(user => {
+    //   console.log('mov in mylist',this.alreadyInList = user.fav_movies);
+    // })
+    this.token = localStorage.getItem('token')
+    this.getFav()
     this.store.dispatch(SetUrl({text:'movie'}))
     this.entr_s.loadMovies(this.page).subscribe(data => {
       this.films = data.result;
@@ -89,10 +104,39 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
 
   addMovieToFav(movieId:string){
     console.log(movieId);
-    const token = localStorage.getItem('token')
-    this.entr_s.addToFav(movieId, token).subscribe(res=>{
+    this.entr_s.addToFav(movieId, this.token).subscribe(res=>{
+      this.getFav()
+    })
+  }
+
+  onSlideChange() {
+    console.log('slide change');
+  }
+  getFav(){
+    this.entr_s.getFavMovie(this.token).subscribe(fav =>{
+      this.alreadyInList = fav
+      console.log(this.alreadyInList);
     })
   }
   
+  filterFav(movieId:string, exist=false){
+    for (let i = 0; i < this.alreadyInList.length; i++) {
+      if(this.alreadyInList[i]._id === movieId){
+        return exist = true
+      }
+    }
+    console.log(exist);
+    return exist; 
+  }
 
+  removeFavMovie(movieId:string){
+    this.entr_s.removeFav(this.token,movieId).subscribe(result =>{
+      console.log('res',result);
+      this.getFav()
+    })
+  }
+
+  addToLikedMovie(movieId:string){
+    this.entr_s.addToLikeMovies(movieId,this.token).subscribe(res =>{console.log(res);})
+  }
 }
