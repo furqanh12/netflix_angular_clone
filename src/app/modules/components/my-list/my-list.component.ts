@@ -20,6 +20,7 @@ export class MyListComponent implements OnInit {
   selected_film: moviesObject = null;
   alreadyInList:any;
   token:string;
+  alreadyLikemovies:any = [];
 
   
   constructor(private http: HttpClient,private entr_s: EntertainmentService, private store: Store<AppState>) {
@@ -30,8 +31,8 @@ export class MyListComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.getLikedMovies()
     this.token = localStorage.getItem('token')
-    console.log('token',this.token);
     this.store.dispatch(SetUrl({text:'mylist'}))
     this.getFavMovies()
   }
@@ -50,6 +51,37 @@ export class MyListComponent implements OnInit {
   removeFavMovie(movieId:string){
     this.entr_s.removeFav(this.token,movieId).subscribe(result =>{
       this.getFavMovies()
+    })
+  }
+
+  addToLikedMovie(movieId:string){
+    this.entr_s.addToLikeMovies(movieId,this.token).subscribe(res =>{
+      console.log(res);
+      this.getLikedMovies()
+    })
+  }
+
+  getLikedMovies(){
+    this.entr_s.getLikedMovies(this.token).subscribe(res => {
+      this.alreadyLikemovies = res
+    })
+  }
+
+  filterLiked(movieId:string, exist = false){
+
+    for (let i = 0; i < this.alreadyLikemovies?.length; i++) {
+
+      if(this.alreadyLikemovies[i]?._id === movieId){
+        return exist = true
+      }
+    }
+    return exist;
+  }
+
+  removeLikeMovie(movieId:string){
+    this.entr_s.removeLikeMovie(movieId,this.token).subscribe(res => {
+        console.log(res);
+    this.getLikedMovies()
     })
   }
 

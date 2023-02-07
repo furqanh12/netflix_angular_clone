@@ -19,6 +19,7 @@ import {EntertainmentService} from 'src/app/services/entertainment.service';
 import { AppState } from 'src/app/ngrx-redux/appState';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/interface/user.interface';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-movies-screen',
@@ -61,6 +62,7 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
   liked: boolean = false;
   alreadyInList:any;
   filterMovie:any=[]
+  alreadyLikemovies:any = [];
   token:string;
 
   constructor(private http: HttpClient, private entr_s: EntertainmentService, private store:Store<AppState>) {}
@@ -74,13 +76,14 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
     // })
     this.token = localStorage.getItem('token')
     this.getFav()
+    this.getLikedMovies()
     this.store.dispatch(SetUrl({text:'movie'}))
     this.entr_s.loadMovies(this.page).subscribe(data => {
       this.films = data.result;
       this.to_10_movies = this.films
         .sort((a: any, b: any) => b.popularity - a.popularity)
         .filter((item: moviesObject, index: number) => index <= 9 && item);
-        console.log(this.movieTitle = this.to_10_movies[4].title, this.movieOverview = this.to_10_movies[4].overview);
+        this.movieTitle = this.to_10_movies[4].title, this.movieOverview = this.to_10_movies[4].overview;
     });
     this.onscroll();
   }
@@ -103,7 +106,6 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
   }
 
   addMovieToFav(movieId:string){
-    console.log(movieId);
     this.entr_s.addToFav(movieId, this.token).subscribe(res=>{
       this.getFav()
     })
@@ -115,28 +117,51 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
   getFav(){
     this.entr_s.getFavMovie(this.token).subscribe(fav =>{
       this.alreadyInList = fav
-      console.log(this.alreadyInList);
     })
   }
   
-  filterFav(movieId:string, exist=false){
-    for (let i = 0; i < this.alreadyInList.length; i++) {
-      if(this.alreadyInList[i]._id === movieId){
+  filterFav(movieId:string, exist = false){
+    for (let i = 0; i < this.alreadyInList?.length; i++) {
+      if(this.alreadyInList[i]?._id === movieId){
         return exist = true
       }
     }
-    console.log(exist);
     return exist; 
   }
 
   removeFavMovie(movieId:string){
     this.entr_s.removeFav(this.token,movieId).subscribe(result =>{
-      console.log('res',result);
       this.getFav()
     })
   }
 
   addToLikedMovie(movieId:string){
-    this.entr_s.addToLikeMovies(movieId,this.token).subscribe(res =>{console.log(res);})
+    this.entr_s.addToLikeMovies(movieId,this.token).subscribe(res =>{
+      console.log(res);
+      this.getLikedMovies()
+    })
+  }
+
+  getLikedMovies(){
+    this.entr_s.getLikedMovies(this.token).subscribe(res => {
+      this.alreadyLikemovies = res
+    })
+  }
+
+  filterLiked(movieId:string, exist = false){
+
+    for (let i = 0; i < this.alreadyLikemovies?.length; i++) {
+
+      if(this.alreadyLikemovies[i]?._id === movieId){
+        return exist = true
+      }
+    }
+    return exist;
+  }
+
+  removeLikeMovie(movieId:string){
+    this.entr_s.removeLikeMovie(movieId,this.token).subscribe(res => {
+    this.getLikedMovies()
+    })
   }
 }

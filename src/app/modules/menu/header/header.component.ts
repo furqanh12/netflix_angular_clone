@@ -27,7 +27,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(SetUrl({text:'signup'}))
-    console.log(this.count$,"$");
     this.token = localStorage.getItem('token')
     document.getElementById("#second-header");
     window.addEventListener("scroll", (e) =>{

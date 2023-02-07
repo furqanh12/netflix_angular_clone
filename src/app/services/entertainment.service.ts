@@ -22,7 +22,6 @@ export class EntertainmentService {
   }
 
   getFavMovie(token:string){
-    console.log(token,"token");
     return this.http.get(environment.host + 'api/movies/get_fav',{ headers:{'Authorization':token} })
   }
 
@@ -31,7 +30,15 @@ export class EntertainmentService {
   }
 
   addToLikeMovies(movieId:string, token:string){
-    return this.http.post(environment.host + 'api/movie/add_to_liked_movies',{movieId},{ headers:{'Authorization':token} })
+    return this.http.post(environment.host + 'api/movies/add_to_liked_movies',{movieId},{ headers:{'Authorization':token} })
+  }
+
+  getLikedMovies(token:string){
+    return this.http.get(environment.host + 'api/movies/get_liked_movies',{ headers:{'Authorization':token} })
+  }
+
+  removeLikeMovie(movieId:string,token:string){
+    return this.http.post(environment.host + 'api/movies/remove_like_movie',{movieId},{ headers:{'Authorization':token} })
   }
 
 }
