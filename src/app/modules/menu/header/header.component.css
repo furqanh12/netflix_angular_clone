@@ -86,12 +86,13 @@ header {
   border-radius: 3px;
 }
 
-.dropdown-toggle:empty::after {
+.dropdown-toggle::after{
   color: #ffffff;
+  transition: transform 0.2s ease-in-out;
 }
-/* .dropdown-button:hover {
-  border: none;
-} */
+.dropdown-toggle::after:hover{
+  transform: rotate(360deg);
+}
 .dropdown button{
   border: none;
 }

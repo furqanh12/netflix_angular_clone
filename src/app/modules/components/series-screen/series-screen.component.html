@@ -50,9 +50,9 @@
                       <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between">
                           <div class="d-flex align-items-center">
-                            <i class="fa-regular fa-circle-play"></i>
+                            <i class="fa-solid fa-circle-play"></i>
                             <i  [ngClass]="!filterFav(film._id) ? 'fa-solid fa-circle-plus' : 'fa-solid fa-check'" aria-hidden="true"(click)="!filterFav(film._id) ? addMovieToFav(film?._id) :removeFavMovie(film._id)" title="Add to my list"></i>
-                            <i (click)="liked = !liked" [class.active]="liked" class="fa-regular fa-thumbs-up" ></i>
+                            <i  [ngClass]="!filterLiked(film._id) ? 'fa-regular fa-thumbs-up' : 'fa-solid fa-thumbs-up'"(click)="!filterLiked(film._id) ? addToLikedMovie(film?._id) :removeLikeMovie(film._id)"></i>
                           </div>
                           <div>
                             <i class="fa-solid fa-circle-chevron-down float-end" type="button" data-bs-toggle="modal" (click)="selectedFilm(film)" data-bs-target="#exampleModal"></i>
@@ -104,9 +104,9 @@
               <div class="container-fluid">
                 <div class="d-flex align-items-center justify-content-between">
                   <div class="d-flex align-items-center">
-                    <i class="fa-regular fa-circle-play"></i>
+                    <i class="fa-solid fa-circle-play"></i>
                     <i  [ngClass]="!filterFav(film._id) ? 'fa-solid fa-circle-plus' : 'fa-solid fa-check'" aria-hidden="true"(click)="!filterFav(film._id) ? addMovieToFav(film?._id) :removeFavMovie(film._id)" title="Add to my list"></i>
-                    <i (click)="liked = !liked" [class.active]="liked" class="fa-regular fa-thumbs-up" ></i>
+                    <i  [ngClass]="!filterLiked(film._id) ? 'fa-regular fa-thumbs-up' : 'fa-solid fa-thumbs-up'"(click)="!filterLiked(film._id) ? addToLikedMovie(film?._id) :removeLikeMovie(film._id)"></i>
                   </div>
                   <div>
                     <i class="fa-solid fa-circle-chevron-down float-end" type="button" data-bs-toggle="modal" (click)="selectedFilm(film)" data-bs-target="#exampleModal"></i>
@@ -152,8 +152,8 @@
                 <h1>{{selected_film?.title}}</h1>
                 <div class="btn-icon">
                   <button class="btn d-flex align-items-center"><i class="fa-sharp fa-solid fa-play fa-2x" style="color: black; padding-right: 5px;"></i>Play</button>
-                  <i class="fa-solid fa-circle-plus fa-2x icon"(click)="addMovieToFav(selected_film?._id)" title="Add to my list"></i>
-                  <i class="fa-regular fa-thumbs-up fa-2x icon" ></i>
+                  <i  [ngClass]="!filterFav(selected_film?._id) ? 'fa-solid fa-circle-plus' : 'fa-solid fa-check'" aria-hidden="true"(click)="!filterFav(selected_film?._id) ? addMovieToFav(selected_film?._id) :removeFavMovie(selected_film?._id)" title="Add to my list"></i>
+                  <i  [ngClass]="!filterLiked(selected_film?._id) ? 'fa-regular fa-thumbs-up fa-2x' : 'fa-solid fa-thumbs-up fa-2x'"(click)="!filterLiked(selected_film?._id) ? addToLikedMovie(selected_film?._id) :removeLikeMovie(selected_film?._id)"></i>
                 </div>
               </div>
            </div>

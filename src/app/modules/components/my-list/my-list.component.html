@@ -10,10 +10,9 @@
                 <div class="container-fluid">
                   <div class="d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
-                      <i class="fa-regular fa-circle-play"></i>
-                      <i class="fa-solid fa-check" title="Add to my list" (click)="removeFavMovie(movie._id)"></i>
-                      <i class="fa-regular fa-thumbs-up"></i>
-                      <i class="fa-solid fa-thumbs-up"></i>
+                      <i class="fa-solid fa-circle-play"></i>
+                      <i class="fa-solid fa-check" title="Remove from my list" (click)="removeFavMovie(movie._id)"></i>
+                      <i  [ngClass]="!filterLiked(movie._id) ? 'fa-regular fa-thumbs-up' : 'fa-solid fa-thumbs-up'"(click)="!filterLiked(movie._id) ? addToLikedMovie(movie?._id) :removeLikeMovie(movie._id)"></i>
                     </div>
                     <div>
                       <i class="fa-solid fa-circle-chevron-down float-end" type="button" data-bs-toggle="modal" (click)="selectedFilm(movie)" data-bs-target="#exampleModal"></i>
@@ -56,7 +55,7 @@
                   <h1>{{selected_film?.title}}</h1>
                   <div class="btn-icon">
                     <button class="btn d-flex align-items-center"><i class="fa-sharp fa-solid fa-play fa-2x" style="color: black; padding-right: 5px;"></i>Play</button>
-                    <i class="fa-solid fa-circle-plus fa-2x icon" title="Add to my list"></i>
+                    <i  [ngClass]="!filterLiked(selected_film?._id) ? 'fa-regular fa-thumbs-up fa-2x' : 'fa-solid fa-thumbs-up fa-2x'"(click)="!filterLiked(selected_film?._id) ? addToLikedMovie(selected_film?._id) :removeLikeMovie(selected_film?._id)"></i>
                   </div>
                 </div>
              </div>
