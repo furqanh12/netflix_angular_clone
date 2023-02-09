@@ -15,7 +15,7 @@ import { moviesObject } from 'src/app/interface/movie.interface';
 })
 export class MyListComponent implements OnInit {
   
-  user$: Observable<User>;
+  user$: Observable<Array<moviesObject | []>>
   favMovie:any=[]
   selected_film: moviesObject = null;
   alreadyInList:any;
@@ -24,9 +24,10 @@ export class MyListComponent implements OnInit {
 
   
   constructor(private http: HttpClient,private entr_s: EntertainmentService, private store: Store<AppState>) {
-    this.user$ = store.pipe(select(state => state.user))
-    this.user$.subscribe(user => {
-      console.log('userdata in mylist',user.fav_movies);
+    this.user$ = store.pipe(select(state => state.user.fav_movies))
+    this.user$.subscribe((fav_movies:Array<moviesObject | []>) => {
+      this.favMovie=fav_movies
+      // console.log('userdata in mylist',user.fav_movies);
     })
   }
   

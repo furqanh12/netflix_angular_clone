@@ -20,6 +20,7 @@ import { AppState } from 'src/app/ngrx-redux/appState';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/interface/user.interface';
 import { stringify } from 'querystring';
+import { upComingMovies } from 'src/app/ngrx-redux/userReducer';
 
 @Component({
   selector: 'app-movies-screen',
@@ -31,8 +32,6 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
 
   @ViewChild('scrollMe') private scrollContainer: ElementRef;
   
-  private offset = 800;
-  private page = 1;
   films: Array<moviesObject>;
   poster_path: string;
   img: string;
@@ -64,40 +63,32 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
   filterMovie:any=[]
   alreadyLikemovies:any = [];
   token:string;
+  upComingMovies:Array<moviesObject | []>
 
   constructor(private http: HttpClient, private entr_s: EntertainmentService, private store:Store<AppState>) {}
-  user$: Observable<User>;
+  user$: Observable<Array<moviesObject | []>>;
+  
   
   ngOnInit(): void {
-    // get movies for page 1
-    // this.user$ = this.store.pipe(select(state => state.user))
+    // this.user$ = this.store.pipe(select(state => state.user.up_coming))
     // this.user$.subscribe(user => {
-    //   console.log('mov in mylist',this.alreadyInList = user.fav_movies);
+    //   console.log('mov in mylist',this.upComingMovies = user);
     // })
     this.token = localStorage.getItem('token')
     this.getFav()
     this.getLikedMovies()
     this.store.dispatch(SetUrl({text:'movie'}))
-    this.entr_s.loadMovies(this.page).subscribe(data => {
+    this.entr_s.loadMovies().subscribe(data => {
       this.films = data.result;
       this.to_10_movies = this.films
         .sort((a: any, b: any) => b.popularity - a.popularity)
         .filter((item: moviesObject, index: number) => index <= 9 && item);
         this.movieTitle = this.to_10_movies[4].title, this.movieOverview = this.to_10_movies[4].overview;
     });
-    this.onscroll();
-  }
-  // get movies by scroll event and page number
-  onscroll() {
-    window.addEventListener('scroll', e => {
-      if (window.pageYOffset > this.offset) {
-        this.offset += this.offset;
-        this.page += 1;
-        this.entr_s.loadMovies(this.page).subscribe(data => {
-          this.films = data.result;
-        });
-      }
-    });
+    // this.entr_s.upComingmovies(this.token).subscribe((res) =>{
+    //   console.log(res.result);
+    //   return this.store.dispatch(upComingMovies({result: res.result}));
+    // })
   }
 
   selectedFilm(film: moviesObject) {

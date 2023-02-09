@@ -50,11 +50,14 @@ import { AppState } from './ngrx-redux/appState';
     CarouselModule,
     StoreModule.forRoot({
       count: sharedDataReducer,
-      user: userReducer
+      user: userReducer,
     }, {
       initialState: {
         count: '',
-        user:{}
+        user:{
+          fav_movies:[],
+          up_coming:[]
+        },
       }
     } as StoreConfig<AppState>)
   ],

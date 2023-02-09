@@ -1,5 +1,6 @@
 import {HttpClient} from '@angular/common/http';
-import { Store } from '@ngrx/store';
+import { ActivatedRoute, Router} from '@angular/router';
+import { select, Store } from '@ngrx/store';
 import { SetUrl } from '../../../ngrx-redux/sharedDataReducer';
 import {
   Component,
@@ -17,6 +18,8 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 import {EntertainmentService} from 'src/app/services/entertainment.service';
 import { AppState } from 'src/app/ngrx-redux/appState';
+import { upComingMovies } from 'src/app/ngrx-redux/userReducer';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-series-screen',
   templateUrl: './series-screen.component.html',
@@ -26,8 +29,7 @@ export class SeriesScreenComponent implements OnInit, moviesObject {
 
   @ViewChild('scrollMe') private scrollContainer: ElementRef;
   
-  private offset = 800;
-  private page = 1;
+
   films: Array<moviesObject>;
   poster_path: string;
   img: string;
@@ -59,36 +61,38 @@ export class SeriesScreenComponent implements OnInit, moviesObject {
   filterMovie:any=[]
   token:string;
   alreadyLikemovies:any = [];
+  upComingMovies:Array<moviesObject>
+  url:string;
 
-  constructor(private http: HttpClient, private entr_s: EntertainmentService, private store:Store<AppState>) {}
-  
+
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private entr_s: EntertainmentService, private store:Store<AppState>) {}
+  user$: Observable<Array<moviesObject>>;
   
   ngOnInit(): void {
+    this.route.url.subscribe(segments => {
+      this.url = segments.join('/');
+    });
+    this.user$ = this.store.pipe(select(state => state.user.up_coming))
+    this.user$.subscribe(user => {
+      console.log('mov in mylist',this.upComingMovies = user);
+    })
     this.token = localStorage.getItem('token')
+    this.store.select(state => state)
     this.getFav()
     this.getLikedMovies()
     // get movies for page 1
     this.store.dispatch(SetUrl({text:'movie'}))
-    this.entr_s.loadMovies(this.page).subscribe(data => {
+    this.entr_s.loadMovies().subscribe(data => {
       this.films = data.result;
       this.to_10_movies = this.films
         .sort((a: any, b: any) => b.popularity - a.popularity)
         .filter((item: moviesObject, index: number) => index <= 9 && item);
         this.movieTitle = this.to_10_movies[6].title, this.movieOverview = this.to_10_movies[6].overview;
     });
-    this.onscroll();
-  }
-  // get movies by scroll event and page number
-  onscroll() {
-    window.addEventListener('scroll', e => {
-      if (window.pageYOffset > this.offset) {
-        this.offset += this.offset;
-        this.page += 1;
-        this.entr_s.loadMovies(this.page).subscribe(data => {
-          this.films = data.result;
-        });
-      }
-    });
+    this.entr_s.upComingmovies(this.token).subscribe((res) =>{
+      console.log(res.result);
+      return this.store.dispatch(upComingMovies({result: res.result}));
+    })
   }
 
   selectedFilm(film: moviesObject) {
