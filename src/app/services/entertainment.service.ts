@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { moviesObject } from '../interface/movie.interface';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,9 +13,9 @@ export class EntertainmentService {
   
   constructor(private http:HttpClient) { }
 
-  loadMovies(pageNo:number):Observable<{status:String,result:Array<moviesObject>}>{
+  loadMovies():Observable<{status:String,result:Array<moviesObject>}>{
     return this.http.get<{status:String,result:Array<moviesObject>}>
-    (environment.host + `api/movies/get_movies?page=${pageNo}`,{})
+    (environment.host + 'api/movies/get_movies',{})
   }
 
   addToFav(movieId:string,token:string){
@@ -39,6 +40,10 @@ export class EntertainmentService {
 
   removeLikeMovie(movieId:string,token:string){
     return this.http.post(environment.host + 'api/movies/remove_like_movie',{movieId},{ headers:{'Authorization':token} })
+  }
+
+  upComingmovies(token:string):Observable<{status:string,result:Array<moviesObject>}>{
+    return this.http.get<{status:string,result:Array<moviesObject>}>(environment.host + 'api/movies/up_comings',{headers:{'Authorization':token}})
   }
 
 }
