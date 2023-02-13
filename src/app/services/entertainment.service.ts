@@ -46,4 +46,8 @@ export class EntertainmentService {
     return this.http.get<{status:string,result:Array<moviesObject>}>(environment.host + 'api/movies/up_comings',{headers:{'Authorization':token}})
   }
 
+  setReminder(movieId:string, token:string){
+    return this.http.post(environment.host + 'api/movies/set_movie_reminder',{movieId},{headers:{'Authorization':token}})
+  }
+
 }
