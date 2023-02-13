@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/ngrx-redux/appState';
 import { SetUrl } from '../../../ngrx-redux/sharedDataReducer';
+import { SocketIoService } from '../../../services/socket-io.service'
 
 declare var $: any
 declare global {
@@ -23,7 +24,13 @@ export class HeaderComponent implements OnInit {
   token: any
   nav:any
   show =['login','signup','plan','']
-  constructor(private router:Router, private store: Store<AppState>) { }
+  
+  constructor(private router:Router, private socketIo: SocketIoService, private store: Store<AppState>) {
+    this.socketIo.socket.on('new-movie', (movie) => {
+      console.log(`New movie released: ${movie.title}`);
+      // Add code to show the notification here
+    });
+  }
 
   ngOnInit(): void {
     this.store.dispatch(SetUrl({text:'signup'}))

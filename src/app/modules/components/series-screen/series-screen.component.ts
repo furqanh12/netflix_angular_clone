@@ -162,4 +162,11 @@ export class SeriesScreenComponent implements OnInit, moviesObject {
     })
   }
 
+  getMovieIdForReminder(movieId:string){
+    console.log(movieId);
+    this.entr_s.setReminder(movieId,this.token).subscribe(res =>{
+      console.log("rem",res);
+    })
+  }
+
 }
