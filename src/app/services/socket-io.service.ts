@@ -10,8 +10,8 @@ export class SocketIoService {
   constructor() {
     this.socket = io.default('http://localhost:3000');
   }
-
-  emit(eventName: string, data: any) {
-    this.socket.emit(eventName, data);
-  }
+  
+  // emit(eventName: string, data: any) {
+  //   this.socket.emit(eventName, data);
+  // }
 }

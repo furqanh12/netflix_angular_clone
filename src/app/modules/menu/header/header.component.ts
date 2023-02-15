@@ -20,14 +20,19 @@ export class HeaderComponent implements OnInit {
 
   count$ = this.store.select(state => state.count);
 
+  moviesNotifications: Array<{}>
   url: any
   token: any
   nav:any
   show =['login','signup','plan','']
-  
   constructor(private router:Router, private socketIo: SocketIoService, private store: Store<AppState>) {
-    this.socketIo.socket.on('new-movie', (movie) => {
-      console.log(`New movie released: ${movie.title}`);
+    this.socketIo.socket.on('socket connection', (connection) => {
+      console.log(connection);
+      // Add code to show the notification here
+    });
+    this.socketIo.socket.on('new release movie notification', async (movie) => {
+      await this.moviesNotifications.push(movie)
+      console.log(`New movie released:`,this.moviesNotifications);
       // Add code to show the notification here
     });
   }
