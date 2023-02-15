@@ -74,7 +74,7 @@ export class SeriesScreenComponent implements OnInit, moviesObject {
     });
     this.user$ = this.store.pipe(select(state => state.user.up_coming))
     this.user$.subscribe(user => {
-      console.log('mov in mylist',this.upComingMovies = user);
+      this.upComingMovies = user
     })
     this.token = localStorage.getItem('token')
     this.store.select(state => state)
@@ -90,7 +90,6 @@ export class SeriesScreenComponent implements OnInit, moviesObject {
         this.movieTitle = this.to_10_movies[6].title, this.movieOverview = this.to_10_movies[6].overview;
     });
     this.entr_s.upComingmovies(this.token).subscribe((res) =>{
-      console.log(res.result);
       return this.store.dispatch(upComingMovies({result: res.result}));
     })
   }
@@ -114,7 +113,6 @@ export class SeriesScreenComponent implements OnInit, moviesObject {
   getFav(){
     this.entr_s.getFavMovie(this.token).subscribe(fav =>{
       this.alreadyInList = fav
-      console.log(this.alreadyInList);
     })
   }
 
@@ -165,7 +163,6 @@ export class SeriesScreenComponent implements OnInit, moviesObject {
   getMovieIdForReminder(movieId:string){
     console.log(movieId);
     this.entr_s.setReminder(movieId,this.token).subscribe(res =>{
-      console.log("rem",res);
     })
   }
 
