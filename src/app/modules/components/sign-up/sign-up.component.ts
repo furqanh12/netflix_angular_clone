@@ -19,6 +19,7 @@ export class SignUpComponent implements OnInit {
   
   signUpFormValue(value:any){
     this.reg_s.signUp(value).subscribe((res: any)=>{
+      localStorage.setItem('userId',res.user._id)
       localStorage.setItem('token',res.token)
       if(res.status === 'success'){
         this.router.navigateByUrl('plans')

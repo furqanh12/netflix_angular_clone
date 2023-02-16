@@ -26,6 +26,7 @@ export class SignInComponent implements OnInit {
     this.reg_s.signIn(value).subscribe((res: any)=>{
       console.log('login page',res);
       this.store.dispatch(userData(res.user))
+      localStorage.setItem('userId',res.user._id)
       localStorage.setItem('token',res.token)
       if(res.status === 'success' && res.token){
         this.router.navigateByUrl('movies')
