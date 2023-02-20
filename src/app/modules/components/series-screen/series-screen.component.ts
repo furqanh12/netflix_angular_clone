@@ -80,9 +80,9 @@ export class SeriesScreenComponent implements OnInit, moviesObject {
     this.store.select(state => state)
     this.getFav()
     this.getLikedMovies()
-    // get movies for page 1
+    // get tvshows 
     this.store.dispatch(SetUrl({text:'movie'}))
-    this.entr_s.loadMovies().subscribe(data => {
+    this.entr_s.loadTvShows().subscribe(data => {
       this.films = data.result;
       this.to_10_movies = this.films
         .sort((a: any, b: any) => b.popularity - a.popularity)

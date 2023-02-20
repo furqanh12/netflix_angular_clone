@@ -18,6 +18,11 @@ export class EntertainmentService {
     (environment.host + 'api/movies/get_movies',{})
   }
 
+  loadTvShows():Observable<{status:String,result:Array<moviesObject>}>{
+    return this.http.get<{status:String,result:Array<moviesObject>}>
+    (environment.host + 'api/movies/get_tvshows',{})
+  }
+
   addToFav(movieId:string,token:string){
     return this.http.post(environment.host + 'api/movies/add_fav',{movie_id:movieId},{ headers:{'Authorization':token} })
   }
