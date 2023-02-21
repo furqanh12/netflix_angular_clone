@@ -1,4 +1,4 @@
-@import "~swiper/swiper-bundle.min.css";
+/* @import "~swiper/swiper-bundle.min.css"; */
 
 .background-img{
   height: 720px;
@@ -12,7 +12,7 @@
 }
 .overlay .cover-button-container{
   position: absolute;
-  padding: 250px 65px;
+  padding: 200px 65px;
 }
 .overlay .cover-button-container h1{
   font-family: 'Lora', serif;
@@ -80,43 +80,6 @@
   align-items: center;
   height: calc(720px - -800px);
   /* overflow: hidden; */
-}
-.swiper{
-  overflow:hidden !important;
-  height: 160px !important;
-  /* padding-bottom: 20px; */
-  /* padding-top: 20px; */
-}
-.swiper-button-next{
-  padding-left: 50px;
-    right: 10px;
-    left: auto;
-    top: 38px;
-    width: 130px;
-    height: 140px;
-}
-.swiper-button-prev{
-  height: 140px;
-  left: 0;
-  right: 0;
-  top: 38px;
-  width: 115px;
-  padding-right: 0px;
-}
-.swiper-pagination-bullet{
-  display: none;
-}
-.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
-  content: 'next';
-  color: gray;
-}
-.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
-  content: 'prev';
-  color: gray;
-}
-.swiper-slide{
-  position: static;
-  width: 235px !important;
 }
 p{
   margin-bottom: 0 !important;

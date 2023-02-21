@@ -41,10 +41,10 @@
             <a class="dropdown-item checking" href="#">
             <div class="row">
               <div class="col-4" style="padding: 5px;">
-                <img src={{noti.movie.img}} alt="" class="img-fluid">
+                <img src={{noti?.movie?.img}} alt="" class="img-fluid">
               </div>
               <div class="col-8" style="padding: 5px;">
-                <p>{{noti.message}}</p>
+                <p style="overflow: hidden;">{{noti.message}}</p>
                 <span class="text-muted">{{moment(noti.date).fromNow()}}</span>
               </div>
             </div>
@@ -60,7 +60,7 @@
       </button>
       <ul class="dropdown-menu dropdown-menu-dark">
         <li>
-          <a class="dropdown-item active" [routerLink]="">
+          <a class="dropdown-item" [routerLink]="">
             <i class="fa-solid fa-pencil"></i>
             <span class="menu-text">Manage Profiles</span>
           </a>

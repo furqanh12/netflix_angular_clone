@@ -1,0 +1,40 @@
+@import '~swiper/swiper-bundle.min.css';
+
+.swiper {
+  overflow: hidden !important;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+.swiper-button-next {
+  top: 62px;
+  width: 40px;
+  height: 100px;
+}
+.swiper-button-next:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+.swiper-button-prev:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+.swiper-button-prev {
+  top: 62px;
+  width: 40px;
+  height: 100px;
+}
+.swiper-pagination-bullet {
+  display: none;
+}
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+  content: 'next';
+  color: gray;
+}
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+  content: 'prev';
+  color: gray;
+}
+.swiper-slide {
+  position: static;
+  width: 235px !important;
+}
