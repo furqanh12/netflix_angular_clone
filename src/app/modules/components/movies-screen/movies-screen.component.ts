@@ -26,7 +26,7 @@ import { upComingMovies } from 'src/app/ngrx-redux/userReducer';
   selector: 'app-movies-screen',
   templateUrl: './movies-screen.component.html',
   styleUrls: ['./movies-screen.component.css'],
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation:ViewEncapsulation.None
 })
 export class MoviesScreenComponent implements OnInit, moviesObject {
 
@@ -53,7 +53,7 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
     {url: '../../../../assets/9.png'},
     {url: '../../../../assets/10.png'},
   ];
-  to_10_movies: Array<moviesObject> = [];
+  top_10_movies: Array<moviesObject> = [];
   selected_film: moviesObject = null;
   movieTitle:string
   movieOverview:string
@@ -79,11 +79,11 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
     this.getLikedMovies()
     this.store.dispatch(SetUrl({text:'movie'}))
     this.entr_s.loadMovies().subscribe(data => {
-      this.films = data.result;
-      this.to_10_movies = this.films
-        .sort((a: any, b: any) => b.popularity - a.popularity)
+      this.films = data.result.sort((a:any, b:any)=> b.vote_count - a.vote_count)
+      this.top_10_movies = this.films
         .filter((item: moviesObject, index: number) => index <= 9 && item);
-        this.movieTitle = this.to_10_movies[4].title, this.movieOverview = this.to_10_movies[4].overview;
+        this.top_10_movies.sort(()=> -1)
+        this.movieTitle = this.top_10_movies[5].title, this.movieOverview = this.top_10_movies[5].overview;
     });
     // this.entr_s.upComingmovies(this.token).subscribe((res) =>{
     //   console.log(res.result);

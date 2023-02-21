@@ -23,7 +23,8 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-series-screen',
   templateUrl: './series-screen.component.html',
-  styleUrls: ['./series-screen.component.css']
+  styleUrls: ['./series-screen.component.css'],
+  // encapsulation:ViewEncapsulation.None
 })
 export class SeriesScreenComponent implements OnInit, moviesObject {
 
@@ -51,13 +52,13 @@ export class SeriesScreenComponent implements OnInit, moviesObject {
     {url: '../../../../assets/9.png'},
     {url: '../../../../assets/10.png'},
   ];
-  to_10_movies: Array<moviesObject> = [];
+  top_10_movies: Array<moviesObject> = [];
   selected_film: moviesObject = null;
   movieTitle:string
   movieOverview:string
   _id:string;
   liked: boolean = false;
-   alreadyInList:any;
+  alreadyInList:any;
   filterMovie:any=[]
   token:string;
   alreadyLikemovies:any = [];
@@ -83,11 +84,11 @@ export class SeriesScreenComponent implements OnInit, moviesObject {
     // get tvshows 
     this.store.dispatch(SetUrl({text:'movie'}))
     this.entr_s.loadTvShows().subscribe(data => {
-      this.films = data.result;
-      this.to_10_movies = this.films
-        .sort((a: any, b: any) => b.popularity - a.popularity)
+      this.films = data.result.sort((a:any, b:any)=> b.vote_count - a.vote_count)
+      this.top_10_movies = this.films
         .filter((item: moviesObject, index: number) => index <= 9 && item);
-        this.movieTitle = this.to_10_movies[6].title, this.movieOverview = this.to_10_movies[6].overview;
+        this.top_10_movies.sort(()=> -1)
+        this.movieTitle = this.top_10_movies[7].title, this.movieOverview = this.top_10_movies[7].overview;
     });
     this.entr_s.upComingmovies(this.token).subscribe((res) =>{
       return this.store.dispatch(upComingMovies({result: res.result}));
