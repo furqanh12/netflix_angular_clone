@@ -27,7 +27,14 @@
     <a [routerLink]="['mylist']">My List</a>
   </nav>
   <nav id="second-nav" class="sub-nav d-flex align-items-center">
-    <a [routerLink]=""><i class="fas fa-search sub-nav-logo"></i></a>
+    <div class="search">
+      <input [(ngModel)]="searchText" (ngModelChange)="searchValue()" placeholder="Titles, people, genres" name="searchText" type="text" class="form-control">
+      <img class="img" src="https://static.vecteezy.com/system/resources/previews/000/442/657/non_2x/vector-search-icon.jpg" alt="">
+    </div>
+    <!-- <div class="search-container">
+      <div class="search-icon"><i class="fa fa-search sub-nav-logo"></i></div>
+      <i class="fas fa-search sub-nav-logo"></i>
+    </div> -->
     <a [routerLink]="">
       <div class="dropdown">
         <i class="fas fa-bell sub-nav-logo position-relative dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

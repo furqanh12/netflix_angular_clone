@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { SetUrl } from '../../../ngrx-redux/sharedDataReducer';import { Router } from '@angular/router';
+import { SetUrl } from '../../../ngrx-redux/sharedDataReducer';
+import { Router } from '@angular/router';
 import { RegistrationService } from 'src/app/services/registration.services';
 import { userData } from 'src/app/ngrx-redux/userReducer';
 import { AppState } from 'src/app/ngrx-redux/appState';
