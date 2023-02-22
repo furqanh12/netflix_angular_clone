@@ -25,6 +25,8 @@ import { MoviesScreenComponent } from './modules/components/movies-screen/movies
 import { SeriesScreenComponent } from './modules/components/series-screen/series-screen.component';
 import { MyListComponent } from './modules/components/my-list/my-list.component';
 import { AppState } from './ngrx-redux/appState';
+import { searchMedia } from './ngrx-redux/searchReducer';
+import { SearchScreenComponent } from './modules/components/search-screen/search-screen.component';
 
 
 @NgModule({
@@ -39,6 +41,7 @@ import { AppState } from './ngrx-redux/appState';
     MoviesScreenComponent,
     SeriesScreenComponent,
     MyListComponent,
+    SearchScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { AppState } from './ngrx-redux/appState';
     StoreModule.forRoot({
       count: sharedDataReducer,
       user: userReducer,
+      searchMedia
     }, {
       initialState: {
         count: '',
@@ -58,6 +62,7 @@ import { AppState } from './ngrx-redux/appState';
           fav_movies:[],
           up_coming:[]
         },
+        searchMedia:[]
       }
     } as StoreConfig<AppState>)
   ],

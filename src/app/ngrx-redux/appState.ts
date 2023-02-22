@@ -7,4 +7,5 @@ export interface AppState {
         up_coming:Array<moviesObject>,
         fav_movies:Array<moviesObject>
     },
+    searchMedia:Array<moviesObject>
 }  
