@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { debounceTime, Observable } from 'rxjs';
 import { moviesObject } from '../interface/movie.interface';
 
 
@@ -21,6 +21,10 @@ export class EntertainmentService {
   loadTvShows():Observable<{status:String,result:Array<moviesObject>}>{
     return this.http.get<{status:String,result:Array<moviesObject>}>
     (environment.host + 'api/movies/get_tvshows',{})
+  }
+
+  searchMedia(searchText:string):Observable<Array<moviesObject>>{
+    return this.http.get<Array<moviesObject>>(environment.host + `api/movies/search_media?q=${searchText}`).pipe(debounceTime(300))
   }
 
   addToFav(movieId:string,token:string){
