@@ -9,12 +9,14 @@ import { PlanScreenComponent } from './modules/components/plan-screen/plan-scree
 import { MoviesScreenComponent } from './modules/components/movies-screen/movies-screen.component';
 import { SeriesScreenComponent } from './modules/components/series-screen/series-screen.component';
 import { MyListComponent } from './modules/components/my-list/my-list.component';
+import { SearchScreenComponent } from './modules/components/search-screen/search-screen.component';
 
 
 const routes: Routes = [
   {path : '', redirectTo:'' , pathMatch: 'full', component : HomeScreenComponent},
   {path : 'login', component : SignInComponent },
   {path : 'signup', component : SignUpComponent},
+  {path : 'search', component : SearchScreenComponent},
   {path : 'plans', component : PlanScreenComponent, canActivate: [AuthGuard]},
   {path : 'home', component : MoviesScreenComponent, canActivate: [AuthGuard]},
   {path : 'tvshow', component : SeriesScreenComponent, canActivate: [AuthGuard]},
