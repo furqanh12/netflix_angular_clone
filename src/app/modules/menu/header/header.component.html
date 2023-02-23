@@ -28,13 +28,9 @@
   </nav>
   <nav id="second-nav" class="sub-nav d-flex align-items-center">
     <div class="search">
-      <input [(ngModel)]="searchText" (ngModelChange)="searchValue()" placeholder="Titles, people, genres" name="searchText" type="text" class="form-control">
-      <img class="img" src="https://static.vecteezy.com/system/resources/previews/000/442/657/non_2x/vector-search-icon.jpg" alt="">
+        <i class="search-img fa fa-search" (click)="showInput = !showInput"></i>
+      <input [(ngModel)]="searchText" (ngModelChange)="searchValue()" [ngClass]="{'toggle': showInput}" placeholder="Titles, people, genres" name="searchText" type="text" class="input">
     </div>
-    <!-- <div class="search-container">
-      <div class="search-icon"><i class="fa fa-search sub-nav-logo"></i></div>
-      <i class="fas fa-search sub-nav-logo"></i>
-    </div> -->
     <a [routerLink]="">
       <div class="dropdown">
         <i class="fas fa-bell sub-nav-logo position-relative dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,7 +57,7 @@
       </div>
     </a>
     <a [routerLink]=""></a>
-    <div class="dropdown">
+    <div style="width: 60px;" class="dropdown">
       <button class="btn dropdown-button dropdown-toggle" disabled type="button" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="../../../../assets/dropdown-img.png" alt="">
       </button>

@@ -10,7 +10,6 @@ import { SocketIoService } from '../../../services/socket-io.service';
 import * as moment from 'moment';
 import { EntertainmentService } from 'src/app/services/entertainment.service';
 import { searchData } from 'src/app/ngrx-redux/searchReducer';
-
 declare var $: any
 declare global {
   interface Window {
@@ -27,6 +26,7 @@ export class HeaderComponent implements OnInit {
   count$ = this.store.select(state => state.count);
 
   moviesNotifications: Array<notifications> = []
+  showInput: boolean = false;
   notificationBanners:number = 0;
   userId: string
   url: any
@@ -68,7 +68,6 @@ moment = moment;
     })
 
   }
-
   notificationBanner(notifications:Array<notifications>){
     notifications.forEach((noti)=>{
       if(!noti.mark_as_read){
@@ -78,7 +77,7 @@ moment = moment;
   }
   
   signIn(){
-    console.log(this.url = localStorage.getItem('Url'))
+    this.url = localStorage.getItem('Url')
     this.router.navigateByUrl('login')
   }
 
@@ -98,16 +97,5 @@ moment = moment;
       this.location.back();
     }
   }
-  
-  // $('.img').click(() => {
-  //   $('.input').toggleClass('toggle');
-  // });
-  
-  // $(document).click((e) => {
-  //   if (!$(e.target).parents('.search').length) {
-  //     $('.search').find('.input').removeClass('toggle');
-  //   }
-  // });
-
 
 }
