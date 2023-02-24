@@ -27,6 +27,7 @@ import { MyListComponent } from './modules/components/my-list/my-list.component'
 import { AppState } from './ngrx-redux/appState';
 import { searchMedia } from './ngrx-redux/searchReducer';
 import { SearchScreenComponent } from './modules/components/search-screen/search-screen.component';
+import { AccountSettingComponent } from './modules/components/account-setting/account-setting.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { SearchScreenComponent } from './modules/components/search-screen/search
     SeriesScreenComponent,
     MyListComponent,
     SearchScreenComponent,
+    AccountSettingComponent,
   ],
   imports: [
     BrowserModule,

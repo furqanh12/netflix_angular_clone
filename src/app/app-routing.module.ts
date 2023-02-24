@@ -10,19 +10,21 @@ import { MoviesScreenComponent } from './modules/components/movies-screen/movies
 import { SeriesScreenComponent } from './modules/components/series-screen/series-screen.component';
 import { MyListComponent } from './modules/components/my-list/my-list.component';
 import { SearchScreenComponent } from './modules/components/search-screen/search-screen.component';
+import { AccountSettingComponent } from './modules/components/account-setting/account-setting.component';
 
 
 const routes: Routes = [
   {path : '', redirectTo:'' , pathMatch: 'full', component : HomeScreenComponent},
   {path : 'login', component : SignInComponent },
   {path : 'signup', component : SignUpComponent},
-  {path : 'search', component : SearchScreenComponent},
+  {path : 'search', component : SearchScreenComponent, canActivate: [AuthGuard]},
   {path : 'plans', component : PlanScreenComponent, canActivate: [AuthGuard]},
   {path : 'home', component : MoviesScreenComponent, canActivate: [AuthGuard]},
   {path : 'tvshow', component : SeriesScreenComponent, canActivate: [AuthGuard]},
   {path : 'movies', component : MoviesScreenComponent, canActivate: [AuthGuard]},
   {path : 'new&popular', component : SeriesScreenComponent, canActivate: [AuthGuard]},
   {path : 'mylist', component : MyListComponent, canActivate: [AuthGuard]},
+  {path : 'account_setting', component : AccountSettingComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({
