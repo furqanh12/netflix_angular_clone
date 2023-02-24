@@ -1,0 +1,7 @@
+<div style="margin-top: 50px; height: 200px; width: 200px;" class="account-setting">
+    <form  #nameChange="ngForm" (ngSubmit)="updateUsername(nameChange.value)">
+        <label>New Username:</label>
+        <input type="text" ngModel  name="nameChange" required>
+        <button type="submit">Update</button>
+    </form>
+</div>
