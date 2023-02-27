@@ -6,7 +6,7 @@
       </a>
       <div class="collapse navbar-collapse me-auto" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <form *ngIf="(count$ | async) === 'signup' || ''">
+          <form *ngIf="(count$ | async) === 'signup' || ''||'account_setting'">
             <button class="btn signin_btn btn-danger" (click)="signIn()" type="submit">Sign In</button>
           </form>
         </ul>
@@ -19,19 +19,19 @@
   <div class="netflixLogo">
     <a id="logo" [routerLink]="['home']"><img src="../../../../assets/logo.png" alt="Logo Image"></a>
   </div>      
-  <nav id="first-nav" class="main-nav">                
+  <nav *ngIf="(count$ | async) != 'account_setting'" id="first-nav" class="main-nav">                
     <a [routerLink]="['home']">Home</a>
     <a [routerLink]="['tvshow']">TV Shows</a>
     <a [routerLink]="['movies']">Movies</a>
     <a [routerLink]="['new&popular']">New & Popular</a>
     <a [routerLink]="['mylist']">My List</a>
   </nav>
-  <nav id="second-nav" class="sub-nav d-flex align-items-center">
-    <div class="search">
+  <nav  id="second-nav" class="sub-nav d-flex align-items-center">
+    <div *ngIf="(count$ | async) != 'account_setting'" class="search">
         <i class="search-img fa fa-search" (click)="showInput = !showInput"></i>
       <input [(ngModel)]="searchText" (ngModelChange)="searchValue()" [ngClass]="{'toggle': showInput}" placeholder="Titles, people, genres" name="searchText" type="text" class="input">
     </div>
-    <a [routerLink]="">
+    <a *ngIf="(count$ | async) != 'account_setting'" [routerLink]="">
       <div class="dropdown">
         <i class="fas fa-bell sub-nav-logo position-relative dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -56,7 +56,6 @@
         </ul>
       </div>
     </a>
-    <a [routerLink]=""></a>
     <div style="width: 60px;" class="dropdown">
       <button class="btn dropdown-button dropdown-toggle" disabled type="button" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="../../../../assets/dropdown-img.png" alt="">

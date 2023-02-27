@@ -1,7 +1,18 @@
-<div style="margin-top: 50px; height: 200px; width: 200px;" class="account-setting">
-    <form  #nameChange="ngForm" (ngSubmit)="updateUsername(nameChange.value)">
-        <label>New Username:</label>
-        <input type="text" ngModel  name="nameChange" required>
-        <button type="submit">Update</button>
-    </form>
+<div
+  class="responsive-account-container"
+  data-uia="responsive-account-container">
+    <div data-uia="loc" lang="en-PK" dir="ltr"> 
+        <div>
+            <h1 class="account-header account-header-inline">Account</h1>
+            <hr>
+            <h4>Change Username</h4>
+            <div class="card account-setting">
+                <form #nameChange="ngForm" (ngSubmit)="updateUsername(nameChange.value,$event)">
+                    <label for="floatingInput">New Username:</label>
+                    <input id="floatingInput" type="text" ngModel name="nameChange" required />
+                    <button type="submit">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
