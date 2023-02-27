@@ -23,7 +23,6 @@ export class SignInComponent implements OnInit {
   }
 
   signInFormValue(value:any){
-    console.log(value);
     this.reg_s.signIn(value).subscribe((res: any)=>{
       console.log('login page',res);
       this.store.dispatch(userData(res.user))
