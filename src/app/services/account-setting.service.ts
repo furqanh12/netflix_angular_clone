@@ -11,7 +11,7 @@ export class AccoutSettingService {
   constructor(private http: HttpClient) { }
 
   changeName(newUsername:{},token:string){
-    return this.http.post(environment.host + 'api/account_setting/change_name',newUsername,{ headers:{'Authorization':token} })
+    return this.http.post(environment.host + 'api/account_setting/change_username',newUsername,{ headers:{'Authorization':token} })
   }
 
 }
