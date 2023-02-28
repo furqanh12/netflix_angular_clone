@@ -5,7 +5,8 @@ export interface AppState {
     count: string,
     user: {
         up_coming:Array<moviesObject>,
-        fav_movies:Array<moviesObject>
+        fav_movies:Array<moviesObject>,
+        user:User
     },
     searchMedia:Array<moviesObject>
 }  
