@@ -3,8 +3,9 @@ import { Store } from '@ngrx/store';
 import { SetUrl } from '../../../ngrx-redux/sharedDataReducer';
 import { Router } from '@angular/router';
 import { RegistrationService } from 'src/app/services/registration.services';
-import { userData } from 'src/app/ngrx-redux/userReducer';
+import { userData, user } from 'src/app/ngrx-redux/userReducer';
 import { AppState } from 'src/app/ngrx-redux/appState';
+import { User } from 'src/app/interface/user.interface';
 
 @Component({
   selector: 'app-sign-in',
@@ -23,8 +24,10 @@ export class SignInComponent implements OnInit {
   }
 
   signInFormValue(value:any){
-    this.reg_s.signIn(value).subscribe((res: any)=>{
-      console.log('login page',res);
+    this.reg_s.signIn(value).subscribe((res)=>{
+      this.store.dispatch(user(res.user))
+      console.log('login page',res.user);
+      
       this.store.dispatch(userData(res.user))
       localStorage.setItem('userId',res.user._id)
       localStorage.setItem('token',res.token)
