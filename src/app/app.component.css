@@ -1,5 +1,9 @@
 @import '~swiper/swiper-bundle.min.css';
 
+body{
+  font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+}
+
 .swiper {
   overflow: hidden !important;
   padding-bottom: 20px;

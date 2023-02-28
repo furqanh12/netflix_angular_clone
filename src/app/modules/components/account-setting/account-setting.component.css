@@ -2,7 +2,7 @@
     top: 100px;
     font-size: 1em;
     max-width: 1024px;
-    height: 600px;
+    height: 900px;
     width: 95%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     color: #333;
@@ -15,8 +15,130 @@
 .responsive-account-container * {
     box-sizing: border-box;
 }
+.account-header-inline {
+    display: inline-block;
+    vertical-align: middle;
+}
+h1 {
+    font-size: 2.15em;
+    margin: 0 0 0.55em;
+}
+.account-section-membersince {
+    align-items: center;
+    color: #555;
+    display: inline-flex;
+    font-size: .8rem;
+    font-weight: 700;
+    margin-left: 20px;
+    padding: 5px 14px 5px 0;
+    text-align: center;
+}
+.account-section-membersince--svg {
+    background: url(https://assets.nflxext.com/ffe/siteui/account/svg/membersince.svg) no-repeat 0 0;
+    height: 26px;
+    margin-right: 5px;
+    padding-right: 26px;
+    width: 26px;
+}
 h4{
     margin-top: 50px;
+}
+.account-section {
+    background-color: inherit;
+    border: none;
+    border-top: 1px solid #999;
+    min-height: 4.5em;
+    padding: 0;
+    background: #fff;
+    margin-bottom: 5px;
+    position: relative;
+}
+.col-8 {
+    padding: 0;
+}
+
+.col-4 {
+    padding: 0;
+}
+.membership-heading{
+    color: #737373;
+    font-size: 1.125em;
+    font-weight: 400;
+    margin-bottom: 20px;
+    padding-top: 15px;
+    text-transform: uppercase;
+}
+.account-subsection{
+    border-bottom: 1px solid rgb(236 236 236);
+}
+.account-section-item {
+    margin-bottom: 10px;
+}
+.account-section-email {
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 15px;
+}
+.account-section-item-disabled {
+    color: #737373;
+}
+.wallet--mop {
+    padding-top: 10px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    font-weight: 500;
+    line-height: 1.5;
+}
+.icon-payment-image {
+    height: 20px;
+    margin-right: 5px;
+}
+.nextBillingDate{
+    padding-top: 10px;
+    font-size: 1em;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    color: #333;
+    padding-bottom: 75px;
+}
+.account-section-header {
+    padding-right: 10px;
+    padding-left: 10px;
+    position: absolute;
+    width: 270px;
+    z-index: 2;
+}
+.profile-badge-new {
+    background-color: #0f84fa;
+    border-radius: 10%;
+    color: #fff;
+    display: inline-block;
+    font-size: .7em;
+    font-weight: 700;
+    margin: 0 0.5em;
+    padding: 0.15em 0.5em;
+}
+.account-section-heading {
+    color: #737373;
+    font-size: 1.14em;
+    font-weight: 400;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    padding: 0;
+    text-transform: uppercase;
+}
+.account-section-group {
+    background-color: inherit;
+    float: left;
+    width: 50%;
+    padding-top: 15px;
+}
+.quality-icon {
+    height: 20px;
+    margin-top: -3px;
+    padding: 0 5px;
+    vertical-align: middle;
 }
 .account-setting{
     margin-top: 10px;
@@ -30,6 +152,7 @@ h4{
 .card{
     height: 100px;
     width: auto;
+    border-top: 1px solid #999;
 }
 .account-setting label {
     padding-right: 10px;
