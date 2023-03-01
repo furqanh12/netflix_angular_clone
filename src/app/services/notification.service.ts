@@ -14,4 +14,9 @@ export class NotificationService {
   allNotifications(token:string):Observable<[notifications]>{
     return this.http.get<[notifications]>(environment.host + 'api/notifications/all_notifications',{headers:{'Authorization':token}})
   }
+
+  setReadNotifications(message:string, token:string){
+    return this.http.post(environment.host + 'api/notifications/set_read_notifications',{message},{headers:{'Authorization':token}})
+  }
+
 }

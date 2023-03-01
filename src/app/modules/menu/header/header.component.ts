@@ -10,6 +10,7 @@ import { SocketIoService } from '../../../services/socket-io.service';
 import * as moment from 'moment';
 import { EntertainmentService } from 'src/app/services/entertainment.service';
 import { searchData } from 'src/app/ngrx-redux/searchReducer';
+import { moviesObject } from 'src/app/interface/movie.interface';
 declare var $: any
 declare global {
   interface Window {
@@ -25,7 +26,7 @@ export class HeaderComponent implements OnInit {
 
   count$ = this.store.select(state => state.count);
 
-  moviesNotifications: Array<notifications> = []
+  moviesNotifications: Array<notifications> 
   showInput: boolean = false;
   notificationBanners:number = 0;
   userId: string
@@ -33,10 +34,15 @@ export class HeaderComponent implements OnInit {
   token: string
   searchText:string
   nav:any
-  show =['login','signup','plan','']
-moment = moment;
+  show = ['login','signup','plan','']
+  moment = moment;
+  alreadyInList:any;
+  filterMovie:any=[]
+  alreadyLikemovies:any = [];
+  selected_film: moviesObject = null;
+
   constructor(private router:Router, private noti_s:NotificationService, 
-    private ent_s:EntertainmentService ,private socketIo: SocketIoService, private location: Location,
+    private entr_s: EntertainmentService,private socketIo: SocketIoService, private location: Location,
     private store: Store<AppState>) {
 
     this.socketIo.socket.on('socket connection', (connection) => {
@@ -51,6 +57,8 @@ moment = moment;
   }
 
   ngOnInit(): void {
+    this.getFav()
+    this.getLikedMovies()
     this.token = localStorage.getItem('token')
     this.noti_s.allNotifications(this.token).subscribe(res => {
       this.moviesNotifications = res
@@ -75,6 +83,10 @@ moment = moment;
       }
     })
   }
+
+  readNotification(message:string){
+    this.noti_s.setReadNotifications(message,this.token).subscribe(res => {})
+  }
   
   signIn(){
     this.url = localStorage.getItem('Url')
@@ -90,12 +102,74 @@ moment = moment;
   searchValue(){
     if (this.searchText.length >= 1) {
       this.router.navigate(['/search']);
-      this.ent_s.searchMedia(this.searchText).subscribe(res => {
+      this.entr_s.searchMedia(this.searchText).subscribe(res => {
         this.store.dispatch(searchData({result:res}))
       })
     } else if(this.searchText.length == 0) {
       this.location.back();
     }
+  }
+
+  selectedFilm(film: moviesObject) {
+    console.log("object");
+    this.selected_film = film;
+    console.log(this.selected_film)
+  }
+
+  addMovieToFav(movieId:string){
+    this.entr_s.addToFav(movieId, this.token).subscribe(res=>{
+      this.getFav()
+    })
+  }
+
+  getFav(){
+    this.entr_s.getFavMovie(this.token).subscribe(fav =>{
+      this.alreadyInList = fav
+    })
+  }
+  
+  filterFav(movieId:string, exist = false){
+    for (let i = 0; i < this.alreadyInList?.length; i++) {
+      if(this.alreadyInList[i]?._id === movieId){
+        return exist = true
+      }
+    }
+    return exist; 
+  }
+
+  removeFavMovie(movieId:string){
+    this.entr_s.removeFav(this.token,movieId).subscribe(result =>{
+      this.getFav()
+    })
+  }
+
+  addToLikedMovie(movieId:string){
+    this.entr_s.addToLikeMovies(movieId,this.token).subscribe(res =>{
+      this.getLikedMovies()
+    })
+  }
+
+  getLikedMovies(){
+    this.entr_s.getLikedMovies(this.token).subscribe(res => {
+      this.alreadyLikemovies = res
+    })
+  }
+
+  filterLiked(movieId:string, exist = false){
+
+    for (let i = 0; i < this.alreadyLikemovies?.length; i++) {
+
+      if(this.alreadyLikemovies[i]?._id === movieId){
+        return exist = true
+      }
+    }
+    return exist;
+  }
+
+  removeLikeMovie(movieId:string){
+    this.entr_s.removeLikeMovie(movieId,this.token).subscribe(res => {
+    this.getLikedMovies()
+    })
   }
 
 }
