@@ -15,7 +15,7 @@
                       <i  [ngClass]="!filterLiked(movie._id) ? 'fa-regular fa-thumbs-up' : 'fa-solid fa-thumbs-up'"(click)="!filterLiked(movie._id) ? addToLikedMovie(movie?._id) :removeLikeMovie(movie._id)"></i>
                     </div>
                     <div>
-                      <i class="fa-solid fa-circle-chevron-down float-end" type="button" data-bs-toggle="modal" (click)="selectedFilm(movie)" data-bs-target="#exampleModal"></i>
+                      <i class="fa-solid fa-circle-chevron-down float-end" type="button" data-bs-toggle="modal" (click)="selectedFilm(movie)" data-bs-target="#my--list"></i>
                     </div>
                   </div>
                   <div data-uia="videoMetadata--container col-md-12" class="videoMetadata--container">
@@ -41,7 +41,7 @@
   </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="my--list" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-body">
         <section class="section-1">
