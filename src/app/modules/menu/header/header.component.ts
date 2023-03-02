@@ -45,20 +45,18 @@ export class HeaderComponent implements OnInit {
     private entr_s: EntertainmentService,private socketIo: SocketIoService, private location: Location,
     private store: Store<AppState>) {
 
-    this.socketIo.socket.on('socket connection', (connection) => {
-      console.log(connection);
-    });
+    this.socketIo.socket.on('socket connection', (connection) => {});
     this.userId = localStorage.getItem('userId')
     this.socketIo.socket.on(`new_release_movie_notification${this.userId}`, (movie) => {
       this.moviesNotifications.push(movie)
       this.notificationBanners++
-      console.log(`New movie released:`,movie);
     });
   }
 
   ngOnInit(): void {
     this.getFav()
     this.getLikedMovies()
+    // this.notificationBanner(this.moviesNotifications)
     this.token = localStorage.getItem('token')
     this.noti_s.allNotifications(this.token).subscribe(res => {
       this.moviesNotifications = res
@@ -111,9 +109,7 @@ export class HeaderComponent implements OnInit {
   }
 
   selectedFilm(film: moviesObject) {
-    console.log("object");
     this.selected_film = film;
-    console.log(this.selected_film)
   }
 
   addMovieToFav(movieId:string){

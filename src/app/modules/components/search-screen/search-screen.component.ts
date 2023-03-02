@@ -29,13 +29,11 @@ export class SearchScreenComponent implements OnInit {
     this.searchData$ = this.store.select(state => state.searchMedia);
     this.searchData$.subscribe((searchData) => {
       this.searchMedia = searchData
-      console.log('Latest search data:', this.searchMedia);
     })
   }
 
   selectedFilm(film: moviesObject) {
     this.selected_film = film;
-    console.log(this.selected_film)
   }
 
   addMovieToFav(movieId:string){
@@ -52,7 +50,6 @@ export class SearchScreenComponent implements OnInit {
 
   addToLikedMovie(movieId:string){
     this.entr_s.addToLikeMovies(movieId,this.token).subscribe(res =>{
-      console.log(res);
       this.getLikedMovies()
     })
   }

@@ -26,7 +26,6 @@ export class SignInComponent implements OnInit {
   signInFormValue(value:any){
     this.reg_s.signIn(value).subscribe((res)=>{
       this.store.dispatch(user(res.user))
-      console.log('login page',res.user);
       
       this.store.dispatch(userData(res.user))
       localStorage.setItem('userId',res.user._id)

@@ -100,7 +100,6 @@ export class SeriesScreenComponent implements OnInit, moviesObject {
   }
 
   addMovieToFav(movieId:string){
-    console.log(movieId);
     const token = localStorage.getItem('token')
     this.entr_s.addToFav(movieId, token).subscribe(res=>{
       this.getFav()
@@ -108,7 +107,6 @@ export class SeriesScreenComponent implements OnInit, moviesObject {
   }
 
   onSlideChange() {
-    console.log('slide change');
   }
 
   getFav(){
@@ -162,7 +160,6 @@ export class SeriesScreenComponent implements OnInit, moviesObject {
   }
 
   getMovieIdForReminder(movieId:string){
-    console.log(movieId);
     this.entr_s.setReminder(movieId,this.token).subscribe(res =>{
     })
   }

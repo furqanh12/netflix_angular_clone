@@ -7,7 +7,6 @@ export const initialState: Array<moviesObject>=[]
 
 export const searchMedia = createReducer(initialState,
     on(searchData, (state, action) =>{
-        console.log(action.result);
         return state = action.result
     })
 )

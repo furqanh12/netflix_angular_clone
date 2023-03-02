@@ -70,10 +70,6 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
   
   
   ngOnInit(): void {
-    // this.user$ = this.store.pipe(select(state => state.user.up_coming))
-    // this.user$.subscribe(user => {
-    //   console.log('mov in mylist',this.upComingMovies = user);
-    // })
     this.token = localStorage.getItem('token')
     this.getFav()
     this.getLikedMovies()
@@ -85,15 +81,11 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
         this.top_10_movies.sort(()=> -1)
         this.movieTitle = this.top_10_movies[5].title, this.movieOverview = this.top_10_movies[5].overview;
     });
-    // this.entr_s.upComingmovies(this.token).subscribe((res) =>{
-    //   console.log(res.result);
-    //   return this.store.dispatch(upComingMovies({result: res.result}));
-    // })
+
   }
 
   selectedFilm(film: moviesObject) {
     this.selected_film = film;
-    console.log(this.selected_film)
   }
 
   addMovieToFav(movieId:string){
@@ -103,7 +95,6 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
   }
 
   onSlideChange() {
-    console.log('slide change');
   }
   getFav(){
     this.entr_s.getFavMovie(this.token).subscribe(fav =>{
@@ -128,7 +119,6 @@ export class MoviesScreenComponent implements OnInit, moviesObject {
 
   addToLikedMovie(movieId:string){
     this.entr_s.addToLikeMovies(movieId,this.token).subscribe(res =>{
-      console.log(res);
       this.getLikedMovies()
     })
   }

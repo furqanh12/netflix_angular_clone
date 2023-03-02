@@ -27,7 +27,6 @@ export class MyListComponent implements OnInit {
     this.user$ = store.pipe(select(state => state.user.fav_movies))
     this.user$.subscribe((fav_movies:Array<moviesObject | []>) => {
       this.favMovie=fav_movies
-      // console.log('userdata in mylist',user.fav_movies);
     })
   }
   
@@ -39,7 +38,6 @@ export class MyListComponent implements OnInit {
   }
 
   getFavMovies(){
-    console.log("object");
     this.entr_s.getFavMovie(this.token).subscribe(res =>{
       this.favMovie = res
     })
@@ -57,7 +55,6 @@ export class MyListComponent implements OnInit {
 
   addToLikedMovie(movieId:string){
     this.entr_s.addToLikeMovies(movieId,this.token).subscribe(res =>{
-      console.log(res);
       this.getLikedMovies()
     })
   }
@@ -81,7 +78,6 @@ export class MyListComponent implements OnInit {
 
   removeLikeMovie(movieId:string){
     this.entr_s.removeLikeMovie(movieId,this.token).subscribe(res => {
-        console.log(res);
     this.getLikedMovies()
     })
   }

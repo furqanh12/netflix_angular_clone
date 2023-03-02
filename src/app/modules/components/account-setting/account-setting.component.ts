@@ -49,7 +49,6 @@ export class AccountSettingComponent implements OnInit {
     if (this.changUsername.valid) {
         const nameChange = this.changUsername.get('newUsername').value;
         this.account_s.changeName({nameChange},this.token).subscribe(res=>{
-          console.log(res);
           this.userData = res.user
         if(res.message){
           this.usernameUpdated = true
